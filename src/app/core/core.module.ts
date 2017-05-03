@@ -8,7 +8,7 @@ import { LoggedInGuard } from './logged-in.guard';
   imports:      [ SharedModule ],
   declarations: [ ],
   exports:      [ ],
-  providers:    [ ]
+  providers:    [ LoggedInGuard ]
 })
 export class CoreModule {
 

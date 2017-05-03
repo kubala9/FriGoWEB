@@ -9,13 +9,12 @@ import { ActivatedRoute } from '@angular/router';
 export class IdComponent implements OnInit {
   public id: string;
 
-  constructor(private route: ActivatedRoute) {
+  constructor(private route: ActivatedRoute) { }
+
+  ngOnInit() {
     this.route.params.subscribe(
       (params) => this.id = params['id']
     );
-  }
-
-  ngOnInit() {
   }
 
 }

@@ -6,5 +6,15 @@ import { Component } from '@angular/core';
   styleUrls: ['./app.component.sass']
 })
 export class AppComponent {
-  title = 'app works!';
+  title: string;
+  menuOpened: boolean;
+
+  constructor(){
+    this.menuOpened = false;
+  }
+
+  changeMenuState(){
+    this.menuOpened = !this.menuOpened;
+  }
+
 }

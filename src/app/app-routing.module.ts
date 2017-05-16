@@ -6,7 +6,7 @@ import { ExampleModule } from './example/example.module';
 export const routes: Routes = [
   {
     path: '',
-    loadChildren: './example/example.module#ExampleModule'
+    loadChildren: './profile/profile.module#ProfileModule'
   },
   {
     path: 'account',

@@ -1,5 +1,5 @@
 import { NgModule } from '@angular/core';
-import { SharedModule } from '../shared/shared.module';;
+import { SharedModule } from '../shared/shared.module';
 
 import { RecipeRoutingModule } from './recipe-routing.module';
 import { CreateComponent } from './create/create.component';
@@ -9,6 +9,7 @@ import { CreateComponent } from './create/create.component';
     SharedModule,
     RecipeRoutingModule
   ],
-  declarations: [CreateComponent]
+  declarations: [CreateComponent],
+  exports: [ CreateComponent ]
 })
 export class RecipeModule { }

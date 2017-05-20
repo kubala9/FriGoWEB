@@ -7,11 +7,14 @@ import { CoreModule } from './core/core.module';
 
 import { AppRoutingModule } from './app-routing.module';
 
+import { RecipeModule } from './recipe/recipe.module';
+
 @NgModule({
   imports: [
     BrowserModule,
     CoreModule,
-    AppRoutingModule
+    AppRoutingModule,
+    RecipeModule
   ],
   declarations: [ AppComponent ],
   bootstrap:    [ AppComponent ]

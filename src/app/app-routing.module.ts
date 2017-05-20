@@ -9,6 +9,10 @@ export const routes: Routes = [
     loadChildren: './example/example.module#ExampleModule'
   },
   {
+    path: 'recipe',
+    loadChildren: './recipe/recipe.module#RecipeModule'
+  },
+  {
     path: 'account',
     loadChildren: './account/account.module#AccountModule'
   },

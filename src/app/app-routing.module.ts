@@ -2,6 +2,7 @@ import { NgModule } from '@angular/core';
 import { Routes, RouterModule } from '@angular/router';
 
 import { ExampleModule } from './example/example.module';
+import { ContactComponent } from './shared/contact/contact.component';
 
 export const routes: Routes = [
   {
@@ -28,6 +29,10 @@ export const routes: Routes = [
     path: 'recipe',
     loadChildren: './recipe/recipe.module#RecipeModule'
   },
+  {
+    path: 'contact',
+    component: ContactComponent
+  }
 ];
 
 @NgModule({

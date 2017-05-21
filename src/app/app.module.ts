@@ -7,14 +7,14 @@ import { CoreModule } from './core/core.module';
 
 import { AppRoutingModule } from './app-routing.module';
 
-import { RecipeModule } from './recipe/recipe.module';
+import { SharedModule } from './shared/shared.module';
 
 @NgModule({
   imports: [
     BrowserModule,
     CoreModule,
     AppRoutingModule,
-    RecipeModule
+    SharedModule
   ],
   declarations: [ AppComponent ],
   bootstrap:    [ AppComponent ]

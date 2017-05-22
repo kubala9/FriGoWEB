@@ -19,8 +19,7 @@
       "testTsconfig": "tsconfig.spec.json",
       "prefix": "fg",
       "styles": [
-        "styles.sass",
-        "../node_modules/font-awesome/css/font-awesome.min.css"
+        "styles.sass"
       ],
       "scripts": [],
       "environmentSource": "environments/environment.ts",

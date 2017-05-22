@@ -1,8 +1,10 @@
 /* You can add global styles to this file, and also import other style files */
 // MAIN STYLES
+ // DATATABLE STYLES   
 @import '~@swimlane/ngx-datatable/release/index.css';
 @import '~@swimlane/ngx-datatable/release/themes/material.css';
 @import '~@swimlane/ngx-datatable/release/assets/icons.css';
+
 $colorBg: #fff6df
 $colorMain: #23b740
 $colorAccent: #959594
@@ -93,3 +95,25 @@ body
     .btn
       width: 100%
       margin: 10px 0
+
+.ngx-datatable.material .datatable-header .datatable-header-cell 
+    vertical-align: top
+    font-size: x-large
+
+.ngx-datatable.material .datatable-header .datatable-header-cell:nth-child(2)
+    text-align: center;
+
+.ngx-datatable.material .datatable-body .datatable-body-row .datatable-body-cell
+    font-size: large
+
+.ngx-datatable.scroll-vertical .datatable-body .datatable-row-wrapper
+    position: absolute;
+    border-top: 1px solid #b4b4ad
+    
+.datatable-checkbox
+    font-size: small
+    
+.ngx-datatable.scroll-vertical .datatable-body
+    overflow-y: scroll
+    
+    

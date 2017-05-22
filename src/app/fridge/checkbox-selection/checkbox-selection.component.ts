@@ -5,13 +5,18 @@ import { Component } from '@angular/core';
   templateUrl: './checkbox-selection.component.html',
   styleUrls: ['./checkbox-selection.component.sass']
 })
+
+
 export class CheckboxSelectionComponent {
 
   rows = [
-    { name: 'Austin', gender: 'Male', company: 'Swimlane' },
-    { name: 'Dany', gender: 'Male', company: 'KFC' },{ name: 'Austin', gender: 'Male', company: 'Swimlane' },
-    { name: 'Dany', gender: 'Male', company: 'KFC' },
-    { name: 'Molly', gender: 'Female', company: 'Burger King' }
+    { name: 'Wilcze mleko', gender: '12 ml' },
+    { name: 'Pomidory', gender: '5 szt'},{ name: 'Krewetki', gender: '200g' },
+    { name: 'Białe wino', gender: '100ml'},
+    { name: 'I tak dalej', gender: '' },
+    { name: 'I tak dalej', gender: '' }
+
+    
   ];
   selected = [];
 

@@ -20,6 +20,10 @@ const routes: Routes = [
   {
     path: ':id',
     component: IdComponent
+  },
+  {
+    path: 'modals',
+    component: ModalsComponent
   }
 ];
 

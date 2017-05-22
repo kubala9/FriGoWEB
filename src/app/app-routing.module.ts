@@ -10,6 +10,10 @@ export const routes: Routes = [
     loadChildren: './profile/profile.module#ProfileModule'
   },
   {
+    path: 'recipe',
+    loadChildren: './recipe/recipe.module#RecipeModule'
+  },
+  {
     path: 'account',
     loadChildren: './account/account.module#AccountModule'
   },

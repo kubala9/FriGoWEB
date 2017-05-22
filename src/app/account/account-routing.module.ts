@@ -5,6 +5,11 @@ import { ChangePasswordComponent } from './change-password/change-password.compo
 
 const routes: Routes = [
   {
+    path: '',
+    pathMatch: 'full',
+    redirectTo: 'change-password'
+  },
+  {
     path: 'change-password',
     component: ChangePasswordComponent
   }

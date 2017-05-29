@@ -1,4 +1,5 @@
 import { Component, OnInit } from '@angular/core';
+import { Router } from '@angular/router';
 import { Recipe } from '../../shared/models/recipe/recipe';
 import { CookbookService } from '../cookbook.service';
 
@@ -11,6 +12,7 @@ export class CookbookComponent implements OnInit {
   public recipes: Recipe[] = [];
 
   constructor(
+    private router: Router,
     private cookbook: CookbookService
   ) { }
 
@@ -21,4 +23,7 @@ export class CookbookComponent implements OnInit {
     );
   }
 
+  onRecipeClick(id: string) {
+    this.router.navigate(['/recipe', id]);
+  }
 }

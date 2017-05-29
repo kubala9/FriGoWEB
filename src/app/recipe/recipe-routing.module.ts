@@ -6,12 +6,12 @@ import { CreateComponent } from './create/create.component';
 
 const routes: Routes = [
   {
-    path: 'single-recipe',
-    component: SingleRecipeComponent
-  },
-  {
     path: 'create',
     component: CreateComponent
+  },
+  {
+    path: ':id',
+    component: SingleRecipeComponent
   }
 ];
 

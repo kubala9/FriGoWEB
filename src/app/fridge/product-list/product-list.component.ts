@@ -1,13 +1,13 @@
 import { Component } from '@angular/core';
 
 @Component({
-  selector: 'fg-checkbox-selection',
-  templateUrl: './checkbox-selection.component.html',
-  styleUrls: ['./checkbox-selection.component.sass']
+  selector: 'fg-product-list',
+  templateUrl: './product-list.component.html',
+  styleUrls: ['./product-list.component.sass']
 })
 
 
-export class CheckboxSelectionComponent {
+export class ProductListComponent {
 
   rows = [
     { name: 'Wilcze mleko', gender: '12 ml' },

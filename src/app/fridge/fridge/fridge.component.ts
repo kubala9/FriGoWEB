@@ -1,5 +1,5 @@
 import { Component, OnInit } from '@angular/core';
-import { CheckboxSelectionComponent } from './../checkbox-selection/checkbox-selection.component';
+import { ProductListComponent } from './../product-list/product-list.component';
 
 @Component({
   selector: 'fg-fridge',

@@ -1,6 +1,6 @@
 import { NgModule } from '@angular/core';
 import { SharedModule } from '../shared/shared.module';
-import {PopupModule} from 'ng2-opd-popup';
+import { PopupModule } from 'ng2-opd-popup';
 
 import { ExampleRoutingModule } from './example-routing.module';
 import { AuthComponent } from './auth/auth.component';

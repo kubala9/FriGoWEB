@@ -13,75 +13,10 @@
             </div>
 
             <div class="cookbook__recipes-wrapper">
-                <div class="cookbook__recipe">
-                    <div class="cookbook__recipe__rating">
-                        <img src="" alt="">
-                        <span>100%</span>
-                    </div>
-                    <h3>Nazwa potrawy</h3>
-                    <div class="cookbook__recipe__rate">
-                        <span>Ocena:</span>
-                        <ul>
-                            <li><i class="fa fa-star-o"></i></li>
-                            <li><i class="fa fa-star-o"></i></li>
-                            <li><i class="fa fa-star-o"></i></li>
-                            <li><i class="fa fa-star-o"></i></li>
-                            <li><i class="fa fa-star-o"></i></li>
-                        </ul>
-                    </div>
-                </div>
-
-                <div class="cookbook__recipe">
-                    <div class="cookbook__recipe__rating">
-                        <img src="" alt="">
-                        <span>100%</span>
-                    </div>
-                    <h3>Nazwa potrawy</h3>
-                    <div class="cookbook__recipe__rate">
-                        <span>Ocena:</span>
-                        <ul>
-                            <li><i class="fa fa-star-o"></i></li>
-                            <li><i class="fa fa-star-o"></i></li>
-                            <li><i class="fa fa-star-o"></i></li>
-                            <li><i class="fa fa-star-o"></i></li>
-                            <li><i class="fa fa-star-o"></i></li>
-                        </ul>
-                    </div>
-                </div>
-                <div class="cookbook__recipe">
-                    <div class="cookbook__recipe__rating">
-                        <img src="" alt="">
-                        <span>100%</span>
-                    </div>
-                    <h3>Nazwa potrawy</h3>
-                    <div class="cookbook__recipe__rate">
-                        <span>Ocena:</span>
-                        <ul>
-                            <li><i class="fa fa-star-o"></i></li>
-                            <li><i class="fa fa-star-o"></i></li>
-                            <li><i class="fa fa-star-o"></i></li>
-                            <li><i class="fa fa-star-o"></i></li>
-                            <li><i class="fa fa-star-o"></i></li>
-                        </ul>
-                    </div>
-                </div>
-                <div class="cookbook__recipe">
-                    <div class="cookbook__recipe__rating">
-                        <img src="" alt="">
-                        <span>100%</span>
-                    </div>
-                    <h3>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Atque cupiditate facilis illum modi numquam sequi.</h3>
-                    <div class="cookbook__recipe__rate">
-                        <span>Ocena:</span>
-                        <ul>
-                            <li><i class="fa fa-star-o"></i></li>
-                            <li><i class="fa fa-star-o"></i></li>
-                            <li><i class="fa fa-star-o"></i></li>
-                            <li><i class="fa fa-star-o"></i></li>
-                            <li><i class="fa fa-star-o"></i></li>
-                        </ul>
-                    </div>
-                </div>
+              <fg-recipe-tile
+                *ngFor="let recipe of recipes"
+                [recipe]="recipe"
+                (click)="onRecipeClick(recipe.id)"></fg-recipe-tile>
             </div>
         </div>
     </div>

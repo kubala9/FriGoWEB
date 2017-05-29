@@ -1,0 +1,13 @@
+<div class="rating">
+    <img src="{{recipe.base64Picture}}" alt="">
+    <span>{{fitness}}</span>
+</div>
+<h3>{{recipe.title}}</h3>
+<div class="rate">
+    <span>Ocena:</span>
+    <ul>
+        <li *ngFor="let star of stars">
+          <i class="fa" [ngClass]="{'fa-star': star, 'fa-star-o': !star}"></i>
+        </li>
+    </ul>
+</div>

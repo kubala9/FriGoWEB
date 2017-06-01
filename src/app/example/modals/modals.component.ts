@@ -23,8 +23,8 @@ export class ModalsComponent {
         showButtons: true, // You can hide this in case you want to use custom buttons 
         confirmBtnContent: "Dodaj", // The text on your confirm button 
         cancleBtnContent: "Anuluj", // the text on your cancel button 
-        confirmBtnClass: "btn btn--color", // your class for styling the confirm button 
-        cancleBtnClass: "btn btn-default", // you class for styling the cancel button 
+        confirmBtnClass: "o-btn o-btn--color", // your class for styling the confirm button 
+        cancleBtnClass: "o-btn o-btn-default", // you class for styling the cancel button 
         animation: "bounceI" // 'fadeInLeft', 'fadeInRight', 'fadeInUp', 'bounceIn','bounceInDown' 
     };
 

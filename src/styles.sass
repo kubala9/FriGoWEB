@@ -1,17 +1,10 @@
 /* You can add global styles to this file, and also import other style files */
 // MAIN STYLES
- // DATATABLE STYLES   
-@import '~@swimlane/ngx-datatable/release/index.css';
-@import '~@swimlane/ngx-datatable/release/themes/material.css';
-@import '~@swimlane/ngx-datatable/release/assets/icons.css';
-
-$colorBg: #fff6df
-$colorMain: #23b740
-$colorAccent: #959594
-$colorFontLight: #fff
-$colorFontDark: $colorAccent
-
-$fontMain: Candara,Calibri,Segoe,Segoe UI,Optima,Arial,sans-serif
+ // DATATABLE STYLES
+@import "~@swimlane/ngx-datatable/release/index.css"
+@import "~@swimlane/ngx-datatable/release/themes/material.css"
+@import "~@swimlane/ngx-datatable/release/assets/icons.css"
+@import "variables.sass"
 
 *
   margin: 0
@@ -46,12 +39,14 @@ body
 
 .title
   display: block
+  max-width: 500px
   font-size: 50px
   color: $colorMain
   margin-bottom: 20px
   padding: 0 20px
   text-align: center
   font-weight: normal
+  box-sizing: border-box
 
   &--underline
     padding-bottom: 10px
@@ -74,18 +69,18 @@ body
 
 
 .centered
-  width: 1180px
+  max-width: 1180px
   margin: 0 auto
-
-  @media all and (max-width: 1180px)
-    width: 100%!important
+  width: 100%
 
 
 .btn-wrapper
   width: 100%
+  max-width: 500px
   display: flex
   flex-direction: row
   justify-content: space-between
+  margin-bottom: 30px
 
   @media all and (max-width: 450px)
     flex-direction: column
@@ -96,7 +91,7 @@ body
       width: 100%
       margin: 10px 0
 
-.ngx-datatable.material .datatable-header .datatable-header-cell 
+.ngx-datatable.material .datatable-header .datatable-header-cell
     vertical-align: top
     font-size: x-large
 
@@ -109,11 +104,25 @@ body
 .ngx-datatable.scroll-vertical .datatable-body .datatable-row-wrapper
     position: absolute;
     border-top: 1px solid #b4b4ad
-    
+
 .datatable-checkbox
     font-size: small
-    
+
 .ngx-datatable.scroll-vertical .datatable-body
     overflow-y: scroll
-    
-    
+
+.rating
+  display: flex
+  flex-direction: row
+  flex-wrap: wrap
+  font-size: 18px
+
+  span
+    padding-right: 10px
+    line-height: 18px
+
+  ul
+    list-style: none
+    display: flex
+    flex-direction: row
+    color: $colorMain

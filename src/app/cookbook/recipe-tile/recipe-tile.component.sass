@@ -1,0 +1,62 @@
+@import '../../../variables.sass'
+
+\:host
+  max-width: 500px
+  min-width: 280px
+  display: flex
+  flex-direction: column
+  justify-content: flex-start
+  margin: 30px 20px
+  flex: 1
+  color: $colorAccent
+  cursor: pointer
+
+  @media all and (max-width: 720px)
+    margin: 30px auto
+    width: 100%
+
+  .rating
+    position: relative
+    margin-bottom: 10px
+
+    img
+      width: 100%
+      height: auto
+      min-height: 260px
+      background: #000
+
+    span
+      position: absolute
+      bottom: 0px
+      right: 0px
+      padding: 20px 15px 10px 30px
+      background: $colorMain
+      color: #fff
+      border-top-left-radius: 100%
+      font-weight: 600
+
+
+  .rate
+    display: flex
+    flex-direction: row
+    justify-content: flex-start
+
+    span
+      font-size: 18px
+      padding-right: 5px
+      line-height: 18px
+
+    ul
+      list-style: none
+      display: flex
+      flex-direction: row
+      justify-content: flex-start
+      color: $colorMain
+      font-weight: bold
+
+      li
+        padding: 0 1px
+
+  h3
+    font-size: 18px
+    margin-bottom: 5px

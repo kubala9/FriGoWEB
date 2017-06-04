@@ -3,6 +3,7 @@ import { NgModule,
 
 import { SharedModule } from '../shared/shared.module';
 import { LoggedInGuard } from './logged-in.guard';
+import { NotifierService } from './notifier.service';
 
 import { User } from '../shared/models/user';
 
@@ -10,7 +11,7 @@ import { User } from '../shared/models/user';
   imports:      [ SharedModule ],
   declarations: [ ],
   exports:      [ ],
-  providers:    [ LoggedInGuard ]
+  providers:    [ LoggedInGuard, NotifierService ]
 })
 export class CoreModule {
 

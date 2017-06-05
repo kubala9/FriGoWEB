@@ -1,3 +1,3 @@
-export interface NewUnit {
+export class NewUnit {
   name: string;
 }

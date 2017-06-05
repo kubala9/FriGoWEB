@@ -2,7 +2,7 @@ import { Comment } from './comment/comment';
 import { IngredientQuantity } from './ingredient-quantity/ingredient-quantity';
 import { Recipe } from './recipe/recipe';
 
-export interface User {
+export class User {
   id?: string;
   userName?: string;
   comments?: Comment[];

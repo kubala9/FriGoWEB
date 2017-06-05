@@ -1,6 +1,6 @@
 import { Ingredient } from '../ingredient/ingredient';
 
-export interface IngredientQuantity {
+export class IngredientQuantity {
   quantity?: number;
   description?: string;
   ingredient?: Ingredient;

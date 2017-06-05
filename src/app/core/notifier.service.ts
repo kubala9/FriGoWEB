@@ -33,7 +33,7 @@ export class NotifierService {
     }
 
     clear(notif) {
-        setTimeout(this.remove(notif), this.time);
+        setTimeout(() => this.remove(notif), this.time);
     }
 
     success(text, fixed = undefined) {

@@ -1,16 +1,16 @@
-export interface ManageInfo {
+export class ManageInfo {
   localLoginProvider?: string;
   email?: string;
   logins?: Login[];
   externalLoginProviders?: ExternalLoginProvider[];
 }
 
-export interface Login {
+export class Login {
   loginProvider?: string;
   providerKey?: string;
 }
 
-export interface ExternalLoginProvider {
+export class ExternalLoginProvider {
   name?: string;
   url?: string;
   state?: string;

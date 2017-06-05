@@ -1,3 +1,3 @@
-export interface Rate {
+export class Rate {
   rate: number;
 }

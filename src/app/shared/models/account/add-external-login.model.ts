@@ -1,3 +1,3 @@
-export interface AddExternalLoginModel {
+export class AddExternalLoginModel {
   externalAccessToken: string;
 }

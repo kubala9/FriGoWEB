@@ -1,10 +1,10 @@
 import { Injectable } from '@angular/core';
 import { ApiService } from '../core/api.service';
-import { Observable, Subject } from 'rxjs';
+import { Observable } from 'rxjs/Observable';
+import { Subject } from 'rxjs/Subject';
 import { NewIngredientQuantity } from '../shared/models/ingredient-quantity/new-ingredient-quantity';
 import { IngredientQuantity } from '../shared/models/ingredient-quantity/ingredient-quantity';
 import { endpoints } from '../shared/endpoints';
-import 'rxjs/add/observable/of';
 
 @Injectable()
 export class FridgeService {

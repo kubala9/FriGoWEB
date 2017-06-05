@@ -2,7 +2,7 @@ import { Injectable } from '@angular/core';
 import { Headers } from '@angular/http';
 import { LoginModel } from '../shared/models/account/login.model';
 import { LoggedInResponse } from '../shared/models/account/logged-in.response';
-import { Observable } from 'rxjs';
+import { Observable } from 'rxjs/Observable';
 
 @Injectable()
 export class UserService {

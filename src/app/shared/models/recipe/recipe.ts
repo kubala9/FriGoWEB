@@ -3,7 +3,7 @@ import { IngredientQuantity } from '../ingredient-quantity/ingredient-quantity';
 import { Tag } from '../tag';
 import { UserStub } from '../stubs/user.stub';
 
-export interface Recipe {
+export class Recipe {
   id?: string;
   title?: string;
   description?: string;

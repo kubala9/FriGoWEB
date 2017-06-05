@@ -1,13 +1,30 @@
 
-
 .fridge-content
+  position: relative
   max-width: 800px
   margin: 0 auto
   display: flex
   flex-direction: column
   align-items: center
 
-.btn-wrapper
+.o-btn
+     @media all and (max-width: 650px)
+        font-size: 15px
+        
+
+.o-btn-wrapper
     margin: 20px 0
-    width: 60%
+    width: 70%
+    
+.enable
+    display: block
+    
+.disable
+    display: none
+    
+.title
+    @media all and (max-width: 650px)
+        font-size: 40px
+    @media all and (max-width: 450px)
+        font-size: 30px
     

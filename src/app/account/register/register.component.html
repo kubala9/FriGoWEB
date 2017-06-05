@@ -1,0 +1,9 @@
+<div class="o-content-wrapper">
+  <form (ngSubmit)="register()">
+    <input name="username" type="text" [(ngModel)]="registerModel.username">
+    <input name="email" type="email" [(ngModel)]="registerModel.email">
+    <input name="password" type="password" [(ngModel)]="registerModel.password">
+    <input name="confirmPassword" type="password" [(ngModel)]="registerModel.confirmPassword">
+    <button type="submit">Wyślij</button>
+  </form>
+</div>

@@ -4,13 +4,8 @@ import { Routes, RouterModule } from '@angular/router';
 import { FridgeComponent } from './fridge/fridge.component';
 
 const routes: Routes = [
-{
-    path: '',
-    pathMatch: 'full',
-    redirectTo: 'fridge'
-  },
   {
-    path: 'fridge',
+    path: '',
     component: FridgeComponent
   }
 ];

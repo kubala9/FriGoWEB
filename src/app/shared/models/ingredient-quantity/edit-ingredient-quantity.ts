@@ -1,4 +1,4 @@
-export interface EditIngredientQuantity {
+export class EditIngredientQuantity {
   quantity?: number;
   description?: string;
 }

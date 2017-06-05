@@ -1,4 +1,4 @@
-export interface NewIngredient {
+export class NewIngredient {
   unitId?: string;
   name?: string;
 }

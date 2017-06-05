@@ -5,9 +5,8 @@ import { UserService } from '../core/user.service';
 import { LoginModel } from '../shared/models/account/login.model';
 import { RegisterModel } from '../shared/models/account/register.model';
 import { LoggedInResponse } from '../shared/models/account/logged-in.response';
-import { Observable } from 'rxjs';
+import { Observable } from 'rxjs/Observable';
 import { endpoints } from '../shared/endpoints';
-import 'rxjs/add/operator/do';
 
 @Injectable()
 export class AccountService {

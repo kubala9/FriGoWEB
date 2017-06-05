@@ -1,5 +1,4 @@
 import { Component, OnInit } from '@angular/core';
-import { Router } from '@angular/router';
 import { FridgeService } from '../fridge.service';
 import { IngredientQuantity } from '../../shared/models/ingredient-quantity/ingredient-quantity';
 
@@ -8,15 +7,13 @@ import { IngredientQuantity } from '../../shared/models/ingredient-quantity/ingr
   templateUrl: './product-list.component.html',
   styleUrls: ['./product-list.component.sass']
 })
-
 export class ProductListComponent {
   rows: IngredientQuantity[] = [];
   selected = [];
-
+  
   constructor(
     private fridge: FridgeService
   ) { }
-
 
   ngOnInit() {
     this.fridge.fridgeContent$

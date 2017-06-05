@@ -1,4 +1,5 @@
 import { Component, OnInit } from '@angular/core';
+import { Router } from '@angular/router';
 import { AccountService } from '../account.service';
 import { UserService } from '../../core/user.service';
 import { LoginModel } from '../../shared/models/account/login.model';
@@ -15,7 +16,8 @@ export class LoginComponent implements OnInit {
 
   constructor(
     private accountService: AccountService,
-    private notifier: NotifierService
+    private notifier: NotifierService,
+    private router: Router
   ) { }
 
   ngOnInit() {
@@ -26,6 +28,7 @@ export class LoginComponent implements OnInit {
       .login(this.loginModel)
       .subscribe(() => {
         this.notifier.success("Zalogowano!");
+        this.router.navigate(['/fridge']);
       }, (error) => {
         this.notifier.error(error);
       });

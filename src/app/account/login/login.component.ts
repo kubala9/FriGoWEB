@@ -22,6 +22,6 @@ export class LoginComponent implements OnInit {
   login() {
     this.accountService
       .login(this.loginModel)
-      .subscribe(console.log, console.log);
+      .subscribe(console.log, console.log); //TODO
   }
 }

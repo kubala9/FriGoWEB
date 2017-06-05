@@ -19,7 +19,7 @@ export class CookbookComponent implements OnInit {
   ngOnInit() {
     this.cookbook.getRecipes().subscribe(
       recipes => this.recipes = recipes,
-      error => console.log(error)
+      error => console.log(error) //TODO
     );
   }
 

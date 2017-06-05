@@ -21,7 +21,7 @@ export class NewProductComponent implements OnInit {
 
   ngOnInit() {
     this.ingredientsService.getIngredients().subscribe(
-      ingredients => {this.ingredients = ingredients; console.log(ingredients); console.log(this.ingredients);}
+      ingredients => this.ingredients = ingredients
     );
   }
 

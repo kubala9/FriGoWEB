@@ -22,9 +22,7 @@ export class ApiService {
   constructor(
     private http: Http,
     private userService: UserService
-  ) {
-    console.log(this);
-  }
+  ) { }
 
   post(endpoint: string, parameters?: any, headers?: Headers) {
     return this.sendRequest(RequestMethod.Post, endpoint, headers, parameters);
@@ -59,7 +57,6 @@ export class ApiService {
       body: parameters,
       url: [environment.apiUrl, endpoint].join('/')
     });
-    console.log(options);
     return this.http.request(new Request(options))
       .map(response => {
         let body: any = { };
@@ -95,12 +92,12 @@ export class ApiService {
     } else {
       newObject = {};
       for (let originalKey in object) {
-          newKey = (originalKey.charAt(0).toLowerCase() + originalKey.slice(1) || originalKey).toString();
-          objectValue = object[originalKey];
-          if(objectValue !== null && objectValue.constructor === Object) {
-            objectValue = this.toCamel(objectValue);
-          }
-          newObject[newKey] = objectValue;
+        newKey = (originalKey.charAt(0).toLowerCase() + originalKey.slice(1) || originalKey).toString();
+        objectValue = object[originalKey];
+        if(objectValue !== null && objectValue.constructor === Object) {
+          objectValue = this.toCamel(objectValue);
+        }
+        newObject[newKey] = objectValue;
       }
     }
     return newObject;

@@ -1,0 +1,9 @@
+<form (ngSubmit)="create()">
+  <input name="quantity" type="number" [(ngModel)]="ingredientQuantity.quantity">
+  {{getUnit()}}
+  <input name="description" type="text" [(ngModel)]="ingredientQuantity.description">
+  <select name="ingredient" [(ngModel)]="selectedIngredient">
+    <option *ngFor="let item of ingredients" [ngValue]="item">{{item.name}}</option>
+  </select>
+  <button type="submit">Wyślij</button>
+</form>

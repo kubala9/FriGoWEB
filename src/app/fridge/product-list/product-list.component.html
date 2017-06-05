@@ -1,5 +1,5 @@
 <div class="table">
-<div class="icons"><i class='fa fa-trash-o'></i> <i class='fa fa-pencil'></i></div>
+<div class="icons"><i class='fa fa-trash-o' (click)="delete()"></i> <i class='fa fa-pencil'></i></div>
  <ngx-datatable
     style="width: 900px; height: 350px"
     class="material"
@@ -12,7 +12,6 @@
     [limit]="5"
     [selected]="selected"
     [selectionType]="'checkbox'"
-    (activate)="onActivate($event)"
     (select)='onSelect($event)'>
   <ngx-datatable-column
     [width]="100"
@@ -21,11 +20,21 @@
     [draggable]="false"
     [resizeable]="false"
     [headerCheckboxable]="true"
-    [checkboxable]="true" 
+    [checkboxable]="true"
     name="">
   </ngx-datatable-column>
-   <ngx-datatable-column name="Nazwa produktu" [width]="650" style="text-align: center"></ngx-datatable-column>
-    <ngx-datatable-column name="Ilość"></ngx-datatable-column>
-   
+   <ngx-datatable-column name="Nazwa produktu" prop="name" [width]="650" style="text-align: center">
+     <ng-template let-row="row" ngx-datatable-cell-template>
+       {{row.ingredient.name}} ({{row.description}})
+     </ng-template>
+   </ngx-datatable-column>
+    <ngx-datatable-column name="Ilość" prop="quantity">
+      <ng-template let-row="row" ngx-datatable-cell-template>
+        {{row.quantity}} ({{row.ingredient.unit.name}})
+      </ng-template>
+    </ngx-datatable-column>
+
 </ngx-datatable>
 </div>
+
+<fg-new-product></fg-new-product>

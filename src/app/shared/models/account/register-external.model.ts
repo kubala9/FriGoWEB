@@ -1,3 +1,3 @@
-export interface RegisterExternalModel {
+export class RegisterExternalModel {
   email: string;
 }

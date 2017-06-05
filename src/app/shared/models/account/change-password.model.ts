@@ -1,4 +1,4 @@
-export interface ChangePasswordModel {
+export class ChangePasswordModel {
   oldPassword: string;
   newPassword: string;
   confirmPassword?: string;

@@ -1,4 +1,4 @@
-export interface RemoveLoginModel {
+export class RemoveLoginModel {
   loginProvider: string;
   providerKey: string;
 }

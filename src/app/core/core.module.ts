@@ -4,14 +4,18 @@ import { NgModule,
 import { SharedModule } from '../shared/shared.module';
 import { LoggedInGuard } from './logged-in.guard';
 import { NotifierService } from './notifier.service';
-
+import { HttpModule } from '@angular/http';
 import { User } from '../shared/models/user';
+import { ApiService } from './api.service';
+import { UserService } from './user.service';
+import { IngredientService } from './ingredient.service';
+import { UnitService } from './unit.service';
 
 @NgModule({
-  imports:      [ SharedModule ],
+  imports:      [ SharedModule, HttpModule ],
   declarations: [ ],
   exports:      [ ],
-  providers:    [ LoggedInGuard, NotifierService ]
+  providers:    [ LoggedInGuard, NotifierService, ApiService, UserService, IngredientService, UnitService ]
 })
 export class CoreModule {
 

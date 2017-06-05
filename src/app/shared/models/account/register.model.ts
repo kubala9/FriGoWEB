@@ -1,5 +1,6 @@
-export class RegisterBindingModel {
+export class RegisterModel {
   email: string;
+  username: string;
   password: string;
-  confirmPassword?: string;
+  confirmPassword: string;
 }

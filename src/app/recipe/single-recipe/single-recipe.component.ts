@@ -2,6 +2,8 @@ import { Component, OnInit } from '@angular/core';
 import { Recipe } from '../../shared/models/recipe/recipe';
 import { RecipeService } from '../recipe.service';
 import { ActivatedRoute } from "@angular/router";
+import { ApiService } from "../../core/api.service";
+import {NotifierService} from "../../core/notifier.service";
 
 @Component({
   selector: 'fg-single-recipe',
@@ -20,7 +22,9 @@ export class SingleRecipeComponent{
 
   constructor(
       private route: ActivatedRoute,
-      private recipes: RecipeService
+      private recipes: RecipeService,
+      private api: ApiService,
+      private notifier: NotifierService
   ) {
     this.notesOpen = false;
     this.commentsOpen = true;
@@ -32,7 +36,7 @@ export class SingleRecipeComponent{
   ngOnInit() {
     let recipeID = this.route.snapshot.params['id'];
     this.recipe = this.recipes.getRecipe(recipeID-1);
-    this.editingMap = new Array(this.recipe.comments.length).fill(false);
+    this.editingMap = this.recipe.comments.length ? new Array(this.recipe.comments.length).fill(false) : null
   }
 
   notesState(){
@@ -58,8 +62,9 @@ export class SingleRecipeComponent{
       }
   }
 
-  starsOnClick() {
+  starsOnClick(i) {
        this.rated = true;
+       console.log('Rate: '+(i+1)+'/5');
   }
 
     get stars(): boolean[] {
@@ -70,7 +75,10 @@ export class SingleRecipeComponent{
     }
 
   removeComment(index) {
-      this.recipe.comments.splice(index, 1);
+      if(confirm('Czy na pewno chcesz usunąć komentarz?')) {
+          this.recipe.comments.splice(index, 1);
+          this.notifier.success('Komentarz został usunięty');
+      }
   }
 
   editComment(index, content) {
@@ -85,6 +93,8 @@ export class SingleRecipeComponent{
 
   saveCommentEdition(index) {
       this.editingMap[index] = false;
+
+      this.notifier.success('Komentarz został zapisany pomyślnie');
   }
 }
 

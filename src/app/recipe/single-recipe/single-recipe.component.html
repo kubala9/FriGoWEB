@@ -46,7 +46,7 @@
                     <span>Oceń przepis:</span>
                     <ul [ngClass]="{'rated': rated}">
                         <li *ngFor="let star of ratingArray; let i = index" aria-selected="true">
-                            <i class="fa" [ngClass]="{'fa-star': star, 'fa-star-o': !star}" (click)="starsOnClick()" (mouseenter)="starsOnHover(i)" (mouseout)="starsOnLeave()"></i>
+                            <i class="fa" [ngClass]="{'fa-star': star, 'fa-star-o': !star}" (click)="starsOnClick(i)" (mouseenter)="starsOnHover(i)" (mouseout)="starsOnLeave()"></i>
                         </li>
                     </ul>
                 </div>
@@ -116,7 +116,7 @@
                             <textarea *ngIf="editingMap[i]" [(ngModel)]="comment.text" name="comment-area" id="comment-area" class="comments__comment-area" value="{{ comment.text }}"></textarea>
 
                             <div class="comments__comment-controls">
-                                <span (click)="removeComment(comment)">
+                                <span (click)="removeComment(i)">
                                     <i class="fa fa-trash"></i>
                                 </span>
                                 <span *ngIf="!editingMap[i]" (click)="editComment(i, comment.text)">

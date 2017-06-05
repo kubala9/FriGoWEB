@@ -10,13 +10,13 @@ import { IngredientQuantity } from '../../shared/models/ingredient-quantity/ingr
 export class ProductListComponent {
   rows: IngredientQuantity[] = [];
   selected = [];
-
+  
   constructor(
     private fridge: FridgeService
   ) { }
 
   ngOnInit() {
-    this.fridge.frigeContent$
+    this.fridge.fridgeContent$
       .subscribe(content => {
         this.rows = content
       });

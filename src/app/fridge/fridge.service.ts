@@ -1,4 +1,5 @@
 import { Injectable } from '@angular/core';
+import { IngredientQuantityMock } from './ingredient-quantity.mock';
 import { ApiService } from '../core/api.service';
 import { Observable } from 'rxjs/Observable';
 import { Subject } from 'rxjs/Subject';
@@ -9,7 +10,7 @@ import { endpoints } from '../shared/endpoints';
 @Injectable()
 export class FridgeService {
   private fridgeContentSource = new Subject<IngredientQuantity[]>();
-  frigeContent$ = this.fridgeContentSource.asObservable();
+  fridgeContent$ = this.fridgeContentSource.asObservable();
 
   constructor(
     private api: ApiService
@@ -20,6 +21,10 @@ export class FridgeService {
       (next) => this.fridgeContentSource.next(next),
       (error) => this.fridgeContentSource.error(error)
     );
+  }
+  
+  getIngredientQuantity(): Observable<IngredientQuantity[]> {
+    return Observable.of(IngredientQuantityMock);
   }
 
   createItem(ingredientQuantity: NewIngredientQuantity): Observable<IngredientQuantity> {

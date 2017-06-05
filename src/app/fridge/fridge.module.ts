@@ -4,6 +4,8 @@ import { NgxDatatableModule } from '@swimlane/ngx-datatable';
 import { FridgeRoutingModule } from './fridge-routing.module';
 import { FridgeComponent } from './fridge/fridge.component';
 import { ProductListComponent } from './product-list/product-list.component';
+import { FridgeService } from './fridge.service';
+import { NewProductComponent } from './new-product/new-product.component';
 
 
 @NgModule({
@@ -12,6 +14,7 @@ import { ProductListComponent } from './product-list/product-list.component';
     FridgeRoutingModule,
     NgxDatatableModule
   ],
-  declarations: [FridgeComponent, ProductListComponent]
+  declarations: [FridgeComponent, ProductListComponent, NewProductComponent],
+  providers: [FridgeService]
 })
 export class FridgeModule { }

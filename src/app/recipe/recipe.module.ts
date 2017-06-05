@@ -4,6 +4,7 @@ import { SharedModule } from '../shared/shared.module';
 import { RecipeRoutingModule } from './recipe-routing.module';
 import { SingleRecipeComponent } from './single-recipe/single-recipe.component';
 import { CreateComponent } from './create/create.component';
+import { RecipeService } from './recipe.service';
 
 @NgModule({
   imports: [
@@ -11,6 +12,7 @@ import { CreateComponent } from './create/create.component';
     RecipeRoutingModule
   ],
   declarations: [ SingleRecipeComponent, CreateComponent ],
-  exports: [ CreateComponent ]
+  exports: [ CreateComponent ],
+  providers: [ RecipeService ]
 })
 export class RecipeModule { }

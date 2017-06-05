@@ -3,16 +3,14 @@
         <div class="single-recipe">
             <div class="single-recipe__head">
                 <div class="single-recipe__head__description">
-                    <h1 class="o-title o-title--underline">Nazwa przepisu</h1>
+                    <h1 class="o-title o-title--underline">{{ recipe.title }}</h1>
                     <div class="single-recipe__details">
                         <span class="single-recipe__details__rating single-recipe__details__item o-rating">
                             <span>Ocena:</span>
                             <ul>
-                                <li><i class="fa fa-star-o"></i></li>
-                                <li><i class="fa fa-star-o"></i></li>
-                                <li><i class="fa fa-star-o"></i></li>
-                                <li><i class="fa fa-star-o"></i></li>
-                                <li><i class="fa fa-star-o"></i></li>
+                                <li *ngFor="let star of stars">
+          <i class="fa" [ngClass]="{'fa-star': star, 'fa-star-o': !star}"></i>
+        </li>
                             </ul>
                         </span>
                         <span class="single-recipe__details__item"><span>Czas przygotowania:</span> 10 min</span>
@@ -38,20 +36,18 @@
                     </ul>
                 </div>
                 <div class="single-recipe__photo">
-                    <img src="" alt="">
+                    <img src="{{recipe.base64Picture}}" alt="{{recipe.title}}">
                 </div>
                 <div class="single-recipe__description">
-                    Lorem ipsum dolor sit amet, consectetur adipisicing elit. Ab accusantium aliquid asperiores assumenda autem debitis delectus deleniti dignissimos distinctio dolore dolores ducimus earum est et facilis hic, laboriosam maxime minus necessitatibus nobis perferendis quo, suscipit tempora tenetur voluptatibus! Consectetur corporis eius odio officiis porro quam recusandae soluta vel. Assumenda facere iure quaerat quasi sunt. Ad alias aperiam architecto autem blanditiis consectetur culpa, delectus dicta distinctio dolorem dolores eligendi enim error est expedita facilis fugit hic in ipsam ipsum laborum, magnam maxime mollitia neque nesciunt nisi optio perspiciatis praesentium quam quas quasi quidem repellendus rerum sapiente similique sint voluptatibus. Consequatur eligendi et exercitationem obcaecati rerum vitae. Architecto at atque consequatur cupiditate, inventore libero magnam molestias, nostrum perferendis perspiciatis possimus quos voluptatem!
+                    {{recipe.description}}
                 </div>
 
                 <div class="single-recipe__rate o-rating">
                     <span>Oceń przepis:</span>
-                    <ul>
-                        <li><i class="fa fa-star-o"></i></li>
-                        <li><i class="fa fa-star-o"></i></li>
-                        <li><i class="fa fa-star-o"></i></li>
-                        <li><i class="fa fa-star-o"></i></li>
-                        <li><i class="fa fa-star-o"></i></li>
+                    <ul [ngClass]="{'rated': rated}">
+                        <li *ngFor="let star of ratingArray; let i = index" aria-selected="true">
+                            <i class="fa" [ngClass]="{'fa-star': star, 'fa-star-o': !star}" (click)="starsOnClick()" (mouseenter)="starsOnHover(i)" (mouseout)="starsOnLeave()"></i>
+                        </li>
                     </ul>
                 </div>
             </div>
@@ -100,9 +96,9 @@
                 </h2>
                 <div class="comments__list dropdown__list" [ngClass]="{'open': commentsOpen }">
 
-                    <div class="comments__single-comment">
+                    <div class="comments__single-comment" *ngFor="let comment of recipe.comments; let i = index">
                         <div class="comments__comment-author">
-                        <span>RyżZKurczakiem4Life</span>
+                        <span>{{ comment.user.userName }}</span>
                         <div class="comments__comment-rating o-rating">
                             <span>Ocena</span>
                             <ul>
@@ -115,40 +111,27 @@
                         </div>
                     </div>
                         <div class="comments__content-wrapper">
-                            <div class="comments__content">
-                            Lorem ipsum dolor sit amet, consectetur adipisicing elit. Corporis dolor error eveniet excepturi fugit ipsam iure iusto laudantium minima minus neque nesciunt numquam possimus quis sapiente tenetur, voluptatem. Dolorem odit similique velit. Aut delectus inventore laborum necessitatibus officiis, praesentium sint.
-                            </div>
+                            <div *ngIf="!editingMap[i]" class="comments__content">{{ comment.text }}</div>
+
+                            <textarea *ngIf="editingMap[i]" [(ngModel)]="comment.text" name="comment-area" id="comment-area" class="comments__comment-area" value="{{ comment.text }}"></textarea>
+
                             <div class="comments__comment-controls">
-                                <span><i class="fa fa-trash"></i></span>
-                                <span><i class="fa fa-pencil"></i></span>
+                                <span (click)="removeComment(comment)">
+                                    <i class="fa fa-trash"></i>
+                                </span>
+                                <span *ngIf="!editingMap[i]" (click)="editComment(i, comment.text)">
+                                    <i class="fa fa-pencil"></i>
+                                </span>
+                                    <span *ngIf="editingMap[i]" (click)="saveCommentEdition(i)">
+                                    <i class="fa fa-floppy-o"></i>
+                                </span>
+                                <span *ngIf="editingMap[i]" (click)="cancelCommentEdition(i)">
+                                    <i class="fa fa-ban"></i>
+                                </span>
                             </div>
                         </div>
                     </div>
 
-                    <div class="comments__single-comment">
-                        <div class="comments__comment-author">
-                            <span>Lorem ipsum dolor.</span>
-                            <div class="comments__comment-rating o-rating">
-                                <span>Ocena</span>
-                                <ul>
-                                    <li><i class="fa fa-star-o"></i></li>
-                                    <li><i class="fa fa-star-o"></i></li>
-                                    <li><i class="fa fa-star-o"></i></li>
-                                    <li><i class="fa fa-star-o"></i></li>
-                                    <li><i class="fa fa-star-o"></i></li>
-                                </ul>
-                            </div>
-                        </div>
-                        <div class="comments__content-wrapper">
-                            <div class="comments__content">
-                                Lorem ipsum dolor sit amet, consectetur adipisicing elit. Aliquam, at dignissimos, dolore ea, facere hic illum nisi perspiciatis quis quos sunt unde. Corporis, deleniti dolore dolores error est exercitationem harum illo, labore laudantium quasi, quibusdam velit voluptate? Alias consequuntur culpa earum enim eum exercitationem iure magni molestias officia officiis, provident quam repellat, sequi veniam voluptates! Adipisci alias aut deleniti deserunt distinctio dolores, excepturi exercitationem fuga ipsum itaque quasi repellat. Architecto enim id molestiae necessitatibus odio rerum sequi sit! Laboriosam molestias neque nisi placeat?
-                            </div>
-                            <div class="comments__comment-controls">
-                                <span><i class="fa fa-trash"></i></span>
-                                <span><i class="fa fa-pencil"></i></span>
-                            </div>
-                        </div>
-                    </div>
 
                 </div>
             </div>

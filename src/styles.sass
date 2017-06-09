@@ -135,6 +135,15 @@ body
 .ngx-datatable.scroll-vertical .datatable-body
     overflow-y: scroll
 
+.ngx-datatable.material .empty-row
+    color: #fff
+    
+    
+.ngx-datatable.material .empty-row::after
+    content: "Brak produktów w lodówce";
+    color: #404040
+    display: block
+    
 .o-rating
   display: flex
   flex-direction: row
@@ -150,3 +159,8 @@ body
     display: flex
     flex-direction: row
     color: $colorMain
+
+button
+    font-family: $fontMain
+    border: none
+    cursor: pointer

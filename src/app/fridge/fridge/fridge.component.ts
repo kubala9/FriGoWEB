@@ -4,7 +4,7 @@ import { IngredientQuantity } from '../../shared/models/ingredient-quantity/ingr
 import { FridgeService } from '../fridge.service';
 
 import { ProductListComponent } from './../product-list/product-list.component';
-import { AddProductComponent } from './../add-product/add-product.component';
+import { NewProductComponent } from './../new-product/new-product.component';
 
 @Component({
   selector: 'fg-fridge',
@@ -26,15 +26,13 @@ export class FridgeComponent implements OnInit {
       );
   }
   
-  
-  public my_Class = 'disable';
-  
-  onClick(){
-        
-        if(this.my_Class=="enable"){
-            this.my_Class='disable';
+  public visible="disable";
+  PopupOperator(e){
+        if(this.visible=="enable"){
+            this.visible='disable';
         }else{
-            this.my_Class='enable';
+            this.visible='enable';
         }
     }
+  
 }

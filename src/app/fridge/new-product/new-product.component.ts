@@ -1,13 +1,15 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, Input, Output, EventEmitter } from '@angular/core';
 import { NewIngredientQuantity } from '../../shared/models/ingredient-quantity/new-ingredient-quantity';
 import { Ingredient } from '../../shared/models/ingredient/ingredient';
 import { FridgeService } from '../fridge.service';
 import { IngredientService } from '../../core/ingredient.service';
+import { FridgeComponent } from '../fridge/fridge.component';
 
 @Component({
   selector: 'fg-new-product',
   templateUrl: './new-product.component.html',
-  styleUrls: ['./new-product.component.sass']
+  styleUrls: ['./new-product.component.sass'],
+  providers: [FridgeService]
 })
 export class NewProductComponent implements OnInit {
   ingredients: Ingredient[] = [];
@@ -42,5 +44,16 @@ export class NewProductComponent implements OnInit {
   set selectedIngredient(value: Ingredient) {
     this.ingredientQuantity.ingredientId = value.id;
     this._selectedIngredient = value;
+  }
+  
+  @Input() visible;
+  @Output() changeVisible = new EventEmitter();
+
+  changeEvent(e){
+  this.changeVisible.emit(e);
+  }
+  
+  stopPropagation(e){
+  e.stopPropagation();
   }
 }

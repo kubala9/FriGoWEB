@@ -1,9 +1,27 @@
-<form (ngSubmit)="create()">
-  <input name="quantity" type="number" [(ngModel)]="ingredientQuantity.quantity">
-  {{getUnit()}}
-  <input name="description" type="text" [(ngModel)]="ingredientQuantity.description">
-  <select name="ingredient" [(ngModel)]="selectedIngredient">
+<div id="new-product__background" (click)="changeEvent($event)">
+   <div id="new-product" (click)="stopPropagation($event)">
+    <span class="o-title o-title--underline">Dodaj produkt</span>
+    <div class="form-row">
+ <form (ngSubmit)="create()">
+ <label for="ingredient"><br/>nazwa</label>
+  <span class="new-product__span-select">
+   <select name="ingredient" class="new-product new-product__product-name" [(ngModel)]="selectedIngredient">
     <option *ngFor="let item of ingredients" [ngValue]="item">{{item.name}}</option>
   </select>
-  <button type="submit">Wyślij</button>
+   <span class="new-product__styled-arrow">&#8595;</span>
+                </span>
+  <br/><label for="quantity">ilość</label>
+  <input name="quantity" type="number" class="new-product new-product__product-quantity" [(ngModel)]="ingredientQuantity.quantity">
+  ({{getUnit()}})
+  <br/><label for="description">opis</label>
+  <input name="description" class="new-product" type="text" [(ngModel)]="ingredientQuantity.description">
+  <div class="o-btn-wrapper">
+      <button type="submit" (click)="changeEvent($event)" class="o-btn o-btn--color">Dodaj</button>
+      <button (click)="changeEvent($event)" class="o-btn">Wróć</button>
+    </div>
 </form>
+</div>
+ </div>
+</div>
+
+

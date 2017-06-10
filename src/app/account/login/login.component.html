@@ -1,7 +1,25 @@
 <div class="o-content-wrapper">
-  <form (ngSubmit)="login()">
-    <input name="username" type="text" [(ngModel)]="loginModel.username">
-    <input name="password" type="password" [(ngModel)]="loginModel.password">
-    <button type="submit" style="width: 20px; height: 20px;"></button>
-  </form>
+  <div class="wrapper-form">
+    <span class="change-password__title o-title o-title--underline">Logowanie</span>
+    <span class="change-password__subtitle o-subtitle">Zaloguj się do systemu</span>
+
+    <div class="form">
+      <form (ngSubmit)="login($event)" name="loginForm">
+        <div class="form__form-item">
+          <label class="form__label" for="username">Login:</label>
+          <input class="form__input" id="username" type="text" name="username" [(ngModel)]="loginModel.username" required>
+        </div>
+        <div class="form__form-item">
+          <label class="form__label" for="password">Hasło:</label>
+          <input class="form__input" id="password" type="password" name="password" [(ngModel)]="loginModel.password" required>
+        </div>
+        <input type="submit" value="Zaloguj się" class="form__hiddenSubmit" />
+      </form>
+    </div>
+
+    <div class="o-btn-wrapper">
+      <a routerLink="/account/register" class="o-btn">Zarejestruj się</a>
+      <a (click)="login($event)" class="o-btn o-btn--color">Zaloguj się</a>
+    </div>
+  </div>
 </div>

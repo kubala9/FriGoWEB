@@ -4,7 +4,7 @@
     <span class="change-password__subtitle o-subtitle">Zarejestruj się do systemu</span>
 
     <div class="form">
-      <form (ngSubmit)="register($event)" name="registerForm">
+      <form (ngSubmit)="register()" name="registerForm">
         <div class="form__form-item">
           <label class="form__label" for="username">Login:</label>
           <input class="form__input" id="username" type="text" name="username" [(ngModel)]="registerModel.username" required>
@@ -28,7 +28,7 @@
     <div class="o-btn-wrapper">
       <a routerLink="/account/login" class="o-btn">Zaloguj się</a>
 
-      <a (click)="register($event)" class="o-btn o-btn--color o-btn--right">Zarejestruj się</a>
+      <a (click)="register()" class="o-btn o-btn--color o-btn--right">Zarejestruj się</a>
     </div>
   </div>
 </div>

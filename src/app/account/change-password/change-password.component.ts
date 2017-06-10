@@ -1,8 +1,8 @@
-import {Component, OnInit} from "@angular/core";
-import {Router} from "@angular/router";
-import {AccountService} from "../account.service";
-import {ChangePasswordModel} from "../../shared/models/account/change-password.model";
-import {NotifierService} from "../../core/notifier.service";
+import { Component, OnInit } from "@angular/core";
+import { Router } from "@angular/router";
+import { AccountService } from "../account.service";
+import { ChangePasswordModel } from "../../shared/models/account/change-password.model";
+import { NotifierService } from "../../core/notifier.service";
 
 @Component({
   selector: 'fg-change-password',
@@ -22,8 +22,7 @@ export class ChangePasswordComponent implements OnInit {
   }
 
 
-  submit(event) {
-    event.preventDefault();
+  submit() {
 
     if (!(this.changePasswordModel &&
         this.changePasswordModel.oldPassword && this.changePasswordModel.oldPassword.length &&
@@ -43,9 +42,7 @@ export class ChangePasswordComponent implements OnInit {
     }
   }
 
-  logout(event) {
-    event.preventDefault();
-
+  logout() {
     this.accountService
         .logout()
 

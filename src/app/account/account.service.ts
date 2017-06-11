@@ -1,13 +1,13 @@
-import {Injectable} from "@angular/core";
-import {Headers} from "@angular/http";
-import {ApiService} from "../core/api.service";
-import {UserService} from "../core/user.service";
-import {LoginModel} from "../shared/models/account/login.model";
-import {RegisterModel} from "../shared/models/account/register.model";
-import {ChangePasswordModel} from "../shared/models/account/change-password.model";
-import {LoggedInResponse} from "../shared/models/account/logged-in.response";
-import {Observable} from "rxjs/Observable";
-import {endpoints} from "../shared/endpoints";
+import { Injectable } from "@angular/core";
+import { Headers } from "@angular/http";
+import { ApiService } from "../core/api.service";
+import { UserService } from "../core/user.service";
+import { LoginModel } from "../shared/models/account/login.model";
+import { RegisterModel } from "../shared/models/account/register.model";
+import { ChangePasswordModel } from "../shared/models/account/change-password.model";
+import { LoggedInResponse } from "../shared/models/account/logged-in.response";
+import { Observable } from "rxjs/Observable";
+import { endpoints } from "../shared/endpoints";
 
 @Injectable()
 export class AccountService {
@@ -34,12 +34,12 @@ export class AccountService {
 
   changePass(changePasswordModel: ChangePasswordModel): Observable<any> {
     return this.api.post(
-        endpoints.register, // @TODO
+        endpoints.changePass,
         changePasswordModel
     );
   }
 
   logout() {
-    return true; // @TODO
+    return this.userService.logout();
   }
 }

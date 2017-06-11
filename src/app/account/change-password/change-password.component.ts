@@ -1,7 +1,7 @@
 import { Component, OnInit } from "@angular/core";
 import { Router } from "@angular/router";
+import { FormGroup, FormBuilder, Validators } from '@angular/forms';
 import { AccountService } from "../account.service";
-import { ChangePasswordModel } from "../../shared/models/account/change-password.model";
 import { NotifierService } from "../../core/notifier.service";
 
 @Component({
@@ -10,36 +10,34 @@ import { NotifierService } from "../../core/notifier.service";
   styleUrls: ['./change-password.component.sass']
 })
 export class ChangePasswordComponent implements OnInit {
-  changePasswordModel: ChangePasswordModel = new ChangePasswordModel();
+    changePassForm : FormGroup;
 
   constructor(
       private accountService: AccountService,
       private notifier: NotifierService,
-      private router: Router
-  ) { }
+      private router: Router,
+      private formBuilder: FormBuilder
+  ) {
+      this.changePassForm = formBuilder.group({
+          'OldPassword' : [null, Validators.required],
+          'NewPassword' : [null, Validators.compose([Validators.required, Validators.minLength(5), Validators.maxLength(16)])],
+          'ConfirmPassword' : [null, Validators.compose([Validators.required, Validators.minLength(5), Validators.maxLength(16)])],
+      });
+  }
 
   ngOnInit() {
   }
 
+  submitForm(value: any):void {
+      this.notifier.clearAll();
 
-  submit() {
-
-    if (!(this.changePasswordModel &&
-        this.changePasswordModel.oldPassword && this.changePasswordModel.oldPassword.length &&
-        this.changePasswordModel.newPassword && this.changePasswordModel.newPassword.length &&
-        this.changePasswordModel.newPasswordConfirm && this.changePasswordModel.newPasswordConfirm.length)) {
-      this.notifier.error('Uzupełnij wszystkie pola!');
-    } else {
-       this.accountService
-           .changePass(this.changePasswordModel)
-           .subscribe(console.log, console.log); //TODO
-      // .subscribe(() => {
-      //   this.notifier.success("Zalogowano!");
-      //   this.router.navigate(['/fridge']);
-      // }, (error) => {
-      //   this.notifier.error(error);
-      // });
-    }
+      this.accountService
+          .changePass(value)
+          .subscribe(() => {
+              this.notifier.success("Zmieniono hasło!");
+          }, (error) => {
+              this.notifier.error(error);
+          });
   }
 
   logout() {
@@ -48,7 +46,6 @@ export class ChangePasswordComponent implements OnInit {
 
     this.notifier.success('Zostałeś wylogowany!');
     this.router.navigate(['/']);
-    //@TODO ?
   }
 
 }

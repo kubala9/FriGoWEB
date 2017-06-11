@@ -17,6 +17,7 @@ body
 
 
 .o-btn
+  font-family: $fontMain
   display: block
   padding: 16px
   background: $colorAccent
@@ -27,6 +28,10 @@ body
   border-radius: 8px
   box-sizing: border-box
   cursor: pointer
+  border: 0;
+
+  &:disabled
+    opacity: 0.5
 
   &:hover
     background: rgba($colorAccent, .85)

@@ -29,15 +29,14 @@ export class RegisterComponent implements OnInit {
         this.registerModel.email && this.registerModel.email.length)) {
       this.notifier.error('Uzupełnij wszystkie pola!');
     } else {
-      this.accountService
-          .register(this.registerModel)
-          .subscribe(console.log, console.log); //TODO
-      // .subscribe(() => {
-      //   this.notifier.success("Zalogowano!");
-      //   this.router.navigate(['/fridge']);
-      // }, (error) => {
-      //   this.notifier.error(error);
-      // });
+        this.accountService
+            .register(this.registerModel)
+            .subscribe(() => {
+                this.notifier.success("Zarejestrowano!");
+                this.router.navigate(['/fridge']);
+            }, (error) => {
+                this.notifier.error(error);
+            });
     }
   }
 }

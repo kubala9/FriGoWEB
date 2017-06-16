@@ -18,7 +18,8 @@
                 </div>
             </div>
 
-            <div class="cookbook__recipes-wrapper">
+            <div *ngIf="!recipes.length" class="cookbook__no-recipes">Brak przepisów...</div>
+            <div *ngIf="recipes.length" class="cookbook__recipes-wrapper">
               <fg-recipe-tile
                 *ngFor="let recipe of recipes | FindRecipeByName: findRecipeInput | FindRecipeByCategory: findRecipeSelect"
                 [recipe]="recipe"

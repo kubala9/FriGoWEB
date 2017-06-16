@@ -2,8 +2,7 @@ import { Component, OnInit } from '@angular/core';
 import { Recipe } from '../../shared/models/recipe/recipe';
 import { RecipeService } from '../recipe.service';
 import { ActivatedRoute } from "@angular/router";
-import { ApiService } from "../../core/api.service";
-import {NotifierService} from "../../core/notifier.service";
+import { NotifierService } from "../../core/notifier.service";
 
 @Component({
   selector: 'fg-single-recipe',
@@ -23,7 +22,6 @@ export class SingleRecipeComponent{
   constructor(
       private route: ActivatedRoute,
       private recipes: RecipeService,
-      private api: ApiService,
       private notifier: NotifierService
   ) {
     this.notesOpen = false;
@@ -35,8 +33,11 @@ export class SingleRecipeComponent{
 
   ngOnInit() {
     let recipeID = this.route.snapshot.params['id'];
-    this.recipe = this.recipes.getRecipe(recipeID-1);
-    this.editingMap = this.recipe.comments.length ? new Array(this.recipe.comments.length).fill(false) : null
+    this.recipes.getRecipe(recipeID).subscribe(
+        recipe => this.recipe = recipe,
+        error => console.log(error)
+    );
+    //this.editingMap = this.recipe.comments.length ? new Array(this.recipe.comments.length).fill(false) : null
   }
 
   notesState(){
@@ -68,10 +69,13 @@ export class SingleRecipeComponent{
   }
 
     get stars(): boolean[] {
-        return [
-            ...Array(this.recipe.rating).fill(true),
-            ...Array(5-this.recipe.rating).fill(false)
-        ]
+        if(this.recipe)
+            return [
+                ...Array(this.recipe.rating).fill(true),
+                ...Array(5-this.recipe.rating).fill(false)
+            ];
+        else
+            return new Array(5).fill(false);
     }
 
   removeComment(index) {

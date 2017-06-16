@@ -3,5 +3,7 @@ export const endpoints = {
   register: 'Account',
   ingredients: 'Ingredient',
   units: 'Unit',
-  ingredientQuantity: 'IngredientQuantity'
+  ingredientQuantity: 'IngredientQuantity',
+  recipes: 'Recipe',
+  tags: 'Tag'
 }

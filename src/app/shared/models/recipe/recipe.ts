@@ -5,7 +5,7 @@ import { UserStub } from '../stubs/user.stub';
 
 export class Recipe {
   id?: string;
-  title?: string;
+  name?: string;
   description?: string;
   ingredientQuantities?: IngredientQuantity[];
   comments?: Comment[];

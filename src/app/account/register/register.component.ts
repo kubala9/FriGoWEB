@@ -22,21 +22,15 @@ export class RegisterComponent implements OnInit {
   }
 
   register() {
-    if (!(this.registerModel &&
-        this.registerModel.username && this.registerModel.username.length &&
-        this.registerModel.password && this.registerModel.password.length &&
-        this.registerModel.confirmPassword && this.registerModel.confirmPassword.length &&
-        this.registerModel.email && this.registerModel.email.length)) {
-      this.notifier.error('Uzupełnij wszystkie pola!');
-    } else {
-        this.accountService
-            .register(this.registerModel)
-            .subscribe(() => {
-                this.notifier.success("Zarejestrowano!");
-                this.router.navigate(['/fridge']);
-            }, (error) => {
-                this.notifier.error(error);
-            });
-    }
+    this.notifier.clearAll();
+
+    this.accountService
+      .register(this.registerModel)
+      .subscribe(() => {
+        this.notifier.success("Zarejestrowano!");
+        this.router.navigate(['/fridge']);
+      }, (error) => {
+        this.notifier.error(error);
+      });
   }
 }

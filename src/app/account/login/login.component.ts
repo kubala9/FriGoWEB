@@ -10,7 +10,6 @@ import { NotifierService } from "../../core/notifier.service";
   styleUrls: ['./login.component.sass']
 })
 export class LoginComponent implements OnInit {
-
   loginModel: LoginModel = new LoginModel();
 
   constructor(
@@ -23,17 +22,15 @@ export class LoginComponent implements OnInit {
   }
 
   login() {
-    if (!(this.loginModel && this.loginModel.username && this.loginModel.username.length && this.loginModel.password && this.loginModel.password.length)) {
-      this.notifier.error('Uzupełnij wszystkie pola!');
-    } else {
-      this.accountService
-          .login(this.loginModel)
-          .subscribe(() => {
-            this.notifier.success("Zalogowano!");
-            this.router.navigate(['/fridge']);
-          }, (error) => {
-            this.notifier.error(error);
-          });
-    }
+    this.notifier.clearAll();
+
+    this.accountService
+      .login(this.loginModel)
+      .subscribe(() => {
+        this.notifier.success("Zalogowano!");
+        this.router.navigate(['/fridge']);
+      }, (error) => {
+        this.notifier.error(error);
+      });
   }
 }

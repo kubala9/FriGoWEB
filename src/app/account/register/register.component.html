@@ -1,34 +1,34 @@
 <div class="o-content-wrapper">
-  <div class="wrapper-form">
-    <span class="change-password__title o-title o-title--underline">Rejestracja</span>
-    <span class="change-password__subtitle o-subtitle">Zarejestruj się do systemu</span>
+  <div class="o-form">
+    <span class="o-title o-title--underline">Rejestracja</span>
+    <span class="o-subtitle">Zarejestruj się do systemu</span>
 
-    <div class="form">
-      <form (ngSubmit)="register()" name="registerForm">
-        <div class="form__form-item">
-          <label class="form__label" for="username">Login:</label>
-          <input class="form__input" id="username" type="text" name="username" [(ngModel)]="registerModel.username" required>
+    <div class="o-form__box">
+      <form (ngSubmit)="register()" #registerForm="ngForm">
+        <div class="o-form__form-item">
+          <label class="o-form__label" for="username">Login:</label>
+          <input class="o-form__input" id="username" type="text" name="username" [(ngModel)]="registerModel.username" required>
         </div>
-        <div class="form__form-item">
-          <label class="form__label" for="email">Adres e-mail:</label>
-          <input class="form__input" id="email" type="email" name="email" [(ngModel)]="registerModel.email" required>
+        <div class="o-form__form-item">
+          <label class="o-form__label" for="email">Adres e-mail:</label>
+          <input class="o-form__input" id="email" type="email" name="email" [(ngModel)]="registerModel.email" required pattern="[^@]+@[^@]+\.[a-zA-Z]{2,6}">
         </div>
-        <div class="form__form-item">
-          <label class="form__label" for="password">Hasło:</label>
-          <input class="form__input" id="password" type="password" name="password" [(ngModel)]="registerModel.password" required>
+        <div class="o-form__form-item">
+          <label class="o-form__label" for="password">Hasło:</label>
+          <input class="o-form__input" id="password" type="password" name="password" [(ngModel)]="registerModel.password" required minlength="10" maxlength="100">
         </div>
-        <div class="form__form-item">
-          <label class="form__label" for="password">Potwierdź hasło:</label>
-          <input class="form__input" id="confirmPassword" type="password" name="confirmPassword" [(ngModel)]="registerModel.confirmPassword" required>
+        <div class="o-form__form-item">
+          <label class="o-form__label" for="password">Potwierdź hasło:</label>
+          <input class="o-form__input" id="confirmPassword" type="password" name="confirmPassword" [(ngModel)]="registerModel.confirmPassword" required minlength="10" maxlength="100">
         </div>
-        <input type="submit" value="Zarejestruj się" class="form__hiddenSubmit" />
+        <input type="submit" value="Zarejestruj się" class="o-form__hiddenSubmit" />
       </form>
     </div>
 
     <div class="o-btn-wrapper">
-      <a routerLink="/account/login" class="o-btn">Zaloguj się</a>
+      <button routerLink="/account/login" class="o-btn">Zaloguj się</button>
 
-      <a (click)="register()" class="o-btn o-btn--color o-btn--right">Zarejestruj się</a>
+      <button (click)="register()" class="o-btn o-btn--color o-btn--right" [(disabled)]="!registerForm.form.valid">Zarejestruj się</button>
     </div>
   </div>
 </div>

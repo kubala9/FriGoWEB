@@ -5,10 +5,10 @@
   <div class="comments__list dropdown__list" [ngClass]="{'open': commentsOpen }">
 
     <fg-comment-tile
-            *ngFor="let comment of recipe.comments; let i = index"
-            [comment] = "comment"
-            [recipe] = "recipe"
-            [commentIndex] = "i"
+      *ngFor="let comment of recipe.comments; let i = index"
+      [comment] = "comment"
+      [recipe] = "recipe"
+      [commentIndex] = "i"
     ></fg-comment-tile>
 
   </div>

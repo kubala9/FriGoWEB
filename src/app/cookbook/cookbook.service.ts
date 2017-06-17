@@ -7,9 +7,6 @@ import { TagsMock } from './tags.mock';
 import { ApiService } from '../core/api.service';
 import { endpoints } from '../shared/endpoints';
 
-import 'rxjs/add/observable/of';
-import {PromiseObservable} from "rxjs/observable/PromiseObservable";
-
 @Injectable()
 export class CookbookService {
   private _recipes: Recipe[];

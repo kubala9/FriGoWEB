@@ -9,20 +9,16 @@ import 'rxjs/add/observable/of';
 
 @Injectable()
 export class RecipeService {
-    private _recipe: Recipe;
-
     constructor(
         private api: ApiService
     ) { }
 
     getRecipe(id): Observable<Recipe> {
-        RecipesMock.forEach((element) => {
-            if (element.id === id) {
-                this._recipe = element;
-            }
-        });
-
-        return Observable.of(this._recipe);
+        return Observable.of(
+          RecipesMock.find((recipe) => {
+            return recipe.id === id;
+          })
+        );
     }
 
     // removeNote(id): void {

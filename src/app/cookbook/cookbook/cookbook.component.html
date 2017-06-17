@@ -8,13 +8,20 @@
                     <a routerLink="/recipe/create" class="o-btn">Dodaj przepis</a>
                 </div>
                 <div class="cookbook__search">
-                    <input type="text">
+                    <input type="text" [(ngModel)]="findRecipeInput">
+                    <select [(ngModel)]="findRecipeSelect">
+                        <option value="" selected>Wszystkie</option>
+                        <option *ngFor="let tag of tags" value="{{tag.name}}">
+                            {{ tag.name }}
+                        </option>
+                    </select>
                 </div>
             </div>
 
-            <div class="cookbook__recipes-wrapper">
+            <div *ngIf="!recipes.length" class="cookbook__no-recipes">Brak przepisów...</div>
+            <div *ngIf="recipes.length" class="cookbook__recipes-wrapper">
               <fg-recipe-tile
-                *ngFor="let recipe of recipes"
+                *ngFor="let recipe of recipes | FindRecipeByName: findRecipeInput | FindRecipeByCategory: findRecipeSelect"
                 [recipe]="recipe"
                 (click)="onRecipeClick(recipe.id)"></fg-recipe-tile>
             </div>

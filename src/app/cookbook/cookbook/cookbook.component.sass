@@ -9,14 +9,24 @@
 
   &__search
     width: 100%
+    display: flex
+    flex-direction: row
+    flex-wrap: wrap
 
     input
-      width: 100%
+      min-width: 300px
+      flex: 2
       height: 36px
       font-family: $fontMain
       color: $colorAccent
       font-size: 26px
       box-sizing: border-box
+
+    select
+      min-width: 200px
+      height: 36px
+      flex: 1
+
 
   &__recipes-wrapper
     width: 100%

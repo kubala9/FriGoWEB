@@ -16,6 +16,7 @@ export class UserService {
 
   onLoggedIn(loggedInResponse: LoggedInResponse) {
     this.setAuthToken(loggedInResponse.access_token);
+    this.setUser(loggedInResponse.userName);
   }
 
   setAuthToken(token: string) {
@@ -23,8 +24,13 @@ export class UserService {
     localStorage.setItem('token', token);
   }
 
+  setUser(userName: string) {
+    localStorage.setItem('userName', userName);
+  }
+
   logout() {
     this.authHeaders = new Headers();
     localStorage.removeItem('token');
+    localStorage.removeItem('userName');
   }
 }

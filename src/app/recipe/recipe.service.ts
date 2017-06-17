@@ -24,8 +24,42 @@ export class RecipeService {
 
         return Observable.of(this._recipe);
     }
-            // return this.api.get(endpoints.recipes + '/' + id)
-            //     .do(recipe => {
-            //         this._recipe = recipe;
-            //     });
+
+    // removeNote(id): void {
+    //     this.api.delete(endpoints.notes + `/${id}`)
+    //         .do(response => {
+    //             console.log(response);
+    //         })
+    // }
+
+    // editNote(id, editRecipeNote) : void {
+    //     this.api.put(
+    //         endpoints.notes,
+    //         `id=${id}&editRecipeNote=${editRecipeNote}`
+    //     ).do(response => { console.log(response) })}
+
+    removeComment(id) : Observable<string> {
+        return this.api.delete(
+            endpoints.comments + `/${id}`
+        ).do(status => {return Observable.of(status)});
+    }
+
+    editComment(id, editComment) : Observable<Comment> {
+        return this.api.put(
+            endpoints.comments,
+            `id=${id}&editComment=${editComment}`
+        ).do(comment => { return Observable.of(comment); })
+    }
+
+    rate(id, rateRecipe) : Observable<number> {
+        return this.api.put(
+            endpoints.rate,
+            `id=${id}&rateRecipe=${rateRecipe}`
+        )
+            .do(
+                response => {
+                    return Observable.of(response)
+                }
+            )
+    }
 }

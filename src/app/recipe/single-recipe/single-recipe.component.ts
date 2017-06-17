@@ -3,7 +3,7 @@ import { Recipe } from '../../shared/models/recipe/recipe';
 import { RecipeService } from '../recipe.service';
 import { ActivatedRoute } from "@angular/router";
 import { NotifierService } from "../../core/notifier.service";
-import {element} from "protractor";
+import { element } from "protractor";
 
 @Component({
   selector: 'fg-single-recipe',
@@ -11,34 +11,26 @@ import {element} from "protractor";
   styleUrls: ['./single-recipe.component.sass']
 })
 export class SingleRecipeComponent{
-  notesOpen: boolean;
-  commentsOpen: boolean;
-  userRating: boolean[];
-  rated: boolean;
-  editingMap: boolean[];
-  oldComment: string;
-  recipe: Recipe;
+    userRating: boolean[];
+    rated: boolean;
+    recipe: Recipe;
 
-  constructor(
+    constructor(
       private route: ActivatedRoute,
       private recipes: RecipeService,
       private notifier: NotifierService
-  ) {
-    this.notesOpen = false;
-    this.commentsOpen = true;
+    ) {
     this.userRating = new Array(5).fill(false);
     this.rated = false;
-    this.oldComment = '';
-  }
+    }
 
-  ngOnInit() {
-    let recipeID = this.route.snapshot.params['id'];
-    this.recipes.getRecipe(recipeID).subscribe(
-        recipe => this.recipe = recipe,
-        error => console.log(error)
-    );
-      //this.editingMap = this.recipe.comments.length ? new Array(this.recipe.comments.length).fill(false) : null
-  }
+    ngOnInit() {
+        let recipeID = this.route.snapshot.params['id'];
+        this.recipes.getRecipe(recipeID).subscribe(
+            recipe => this.recipe = recipe,
+            error => console.log(error)
+        );
+    }
 
     get getAvailableIngredientsRatio(): string {
       let available = this.recipe.ingredientQuantities;
@@ -62,50 +54,36 @@ export class SingleRecipeComponent{
             return new Array(5).fill(false);
 };
 
-  notesState(){
-    this.notesOpen = !this.notesOpen;
-  }
+    //@TODO jak będą notatki dodane do modelu
+    // removeNote(index) {
+    //     let note;
+    //
+    //     if('notes' in this.recipe) {
+    //
+    //         this.recipes.removeNote(note);
+    //     }
+    // }
 
-  commentsState(){
-    this.commentsOpen = !this.commentsOpen;
-  }
+    rate(i) {
+        if(this.rated === false) {
+            let rating = i+1;
+            let self = this;
 
-  rate(i) {
-      let rating = i+1;
-      this.userRating = [
-          ...Array(rating).fill(true),
-          ...Array(5 - rating).fill(false)
-      ];
-      this.rated = true;
+            this.recipes.rate(this.recipe.id, rating).subscribe(
+                response => {
+                    self.notifier.success('Dziękujemy za ocenę przepisu');
+                    self.userRating = [
+                        ...Array(rating).fill(true),
+                        ...Array(5 - rating).fill(false)
+                    ];
+                    self.rated = true;
+                },
+                error => {
+                    self.notifier.error('Nie udało sie przesłać Twojej oceny');
+                }
+            )
 
-
-       //recipes.rate(recipeID, rating)
-  }
-
-
-
-
-  removeComment(index) {
-      if(confirm('Czy na pewno chcesz usunąć komentarz?')) {
-          this.recipe.comments.splice(index, 1);
-          this.notifier.success('Komentarz został usunięty');
-      }
-  }
-
-  editComment(index, content) {
-      this.oldComment = content;
-      this.editingMap[index] = true;
-  }
-
-  cancelCommentEdition(index) {
-      this.recipe.comments[index].text = this.oldComment;
-      this.editingMap[index] = false;
-  }
-
-  saveCommentEdition(index) {
-      this.editingMap[index] = false;
-
-      this.notifier.success('Komentarz został zapisany pomyślnie');
-  }
+        }
+    }
 }
 

@@ -5,5 +5,8 @@ export const endpoints = {
   units: 'Unit',
   ingredientQuantity: 'IngredientQuantity',
   recipes: 'Recipe',
-  tags: 'Tag'
+  tags: 'Tag',
+  notes: 'RecipeNote',
+  comments: 'Comment',
+  rate: 'Rate'
 }

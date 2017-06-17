@@ -17,6 +17,7 @@ body
 
 
 .o-btn
+  font-family: $fontMain
   display: block
   padding: 16px
   background: $colorAccent
@@ -26,6 +27,15 @@ body
   text-align: center
   border-radius: 8px
   box-sizing: border-box
+  cursor: pointer
+  border: 0;
+
+  &:disabled
+    opacity: 0.5
+    cursor: default
+
+    &:hover
+      background: $colorAccent
 
   &:hover
     background: rgba($colorAccent, .85)
@@ -36,6 +46,12 @@ body
     &:hover
       background: rgba($colorMain, .85)
 
+    &:disabled
+      &:hover
+        background: $colorMain
+
+  &--right
+    margin-left: auto
 
 .o-title
   display: block
@@ -150,3 +166,51 @@ body
     display: flex
     flex-direction: row
     color: $colorMain
+
+.o-form
+  max-width: 500px
+  margin: 0 auto
+  display: flex
+  flex-direction: column
+  align-items: center
+
+  &__box
+    width: 100%
+    display: flex
+    flex-direction: column
+    justify-content: flex-start
+    margin-bottom: 30px
+    position: relative;
+    overflow: hidden;
+    padding: 5px
+
+  &__form-item
+    margin-bottom: 22px
+    display: flex
+    flex-direction: row
+    flex-wrap: wrap
+    width: 100%
+
+  &__label, &__input
+    min-width: 200px
+    flex: 1
+    font-size: 24px
+    color: $colorAccent
+
+  &__input
+    font-family: $fontMain
+
+    &.ng-touched.ng-invalid
+      box-shadow: 0 0 5px red;
+
+    &.ng-touched.ng-valid
+      box-shadow: 0 0 5px green;
+
+  &__label
+    margin-right: 15px
+
+  &__hiddenSubmit
+    position: absolute;
+    top: -9999px
+    left: -9999px
+

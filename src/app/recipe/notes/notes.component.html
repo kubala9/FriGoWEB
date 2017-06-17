@@ -1,0 +1,12 @@
+<div class="notes dropdown">
+  <h2 class="notes__title dropdown__title" (click)="changeNotesState()">
+    Notatki <i class="fa fa-caret-up" [ngClass]="{'open': notesOpen }"></i>
+  </h2>
+  <div class="notes__list dropdown__list" [ngClass]="{'open': notesOpen }">
+    <div *ngIf="!recipe.notes">Brak notatek...</div>
+    <!--<fg-note-tile-->
+            <!--*ngFor="let note of recipe.notes; let i = index"-->
+    <!--&gt;</fg-note-tile>-->
+
+  </div>
+</div>

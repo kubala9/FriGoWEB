@@ -3,6 +3,7 @@ import { Recipe } from '../../shared/models/recipe/recipe';
 import { RecipeService } from '../recipe.service';
 import { ActivatedRoute } from "@angular/router";
 import { NotifierService } from "../../core/notifier.service";
+import {element} from "protractor";
 
 @Component({
   selector: 'fg-single-recipe',
@@ -12,12 +13,11 @@ import { NotifierService } from "../../core/notifier.service";
 export class SingleRecipeComponent{
   notesOpen: boolean;
   commentsOpen: boolean;
-  ratingArray: boolean[];
+  userRating: boolean[];
   rated: boolean;
   editingMap: boolean[];
   oldComment: string;
   recipe: Recipe;
-
 
   constructor(
       private route: ActivatedRoute,
@@ -26,7 +26,7 @@ export class SingleRecipeComponent{
   ) {
     this.notesOpen = false;
     this.commentsOpen = true;
-    this.ratingArray = new Array(5).fill(false);
+    this.userRating = new Array(5).fill(false);
     this.rated = false;
     this.oldComment = '';
   }
@@ -37,36 +37,20 @@ export class SingleRecipeComponent{
         recipe => this.recipe = recipe,
         error => console.log(error)
     );
-    //this.editingMap = this.recipe.comments.length ? new Array(this.recipe.comments.length).fill(false) : null
+      //this.editingMap = this.recipe.comments.length ? new Array(this.recipe.comments.length).fill(false) : null
   }
 
-  notesState(){
-    this.notesOpen = !this.notesOpen;
-  }
+    get getAvailableIngredientsRatio(): string {
+      let available = this.recipe.ingredientQuantities;
+      let missing = this.recipe.missingIngredientQuantities;
 
-  commentsState(){
-    this.commentsOpen = !this.commentsOpen;
-  }
+      if(available && missing){
+          let ratio = available.length / (available.length + missing.length);
 
-  starsOnHover(index) {
-      if(!this.rated){
-          this.ratingArray.forEach((star, i) => {
-              if(i <= index) this.ratingArray[i] = true;
-              else this.ratingArray[i] = false;
-          });
+          return ratio * 100 + '%';
       }
-  }
-
-  starsOnLeave() {
-      if(!this.rated){
-          this.ratingArray.fill(false);
-      }
-  }
-
-  starsOnClick(i) {
-       this.rated = true;
-       console.log('Rate: '+(i+1)+'/5');
-  }
+      else return 'Brak danych';
+  };
 
     get stars(): boolean[] {
         if(this.recipe)
@@ -76,7 +60,30 @@ export class SingleRecipeComponent{
             ];
         else
             return new Array(5).fill(false);
-    }
+};
+
+  notesState(){
+    this.notesOpen = !this.notesOpen;
+  }
+
+  commentsState(){
+    this.commentsOpen = !this.commentsOpen;
+  }
+
+  rate(i) {
+      let rating = i+1;
+      this.userRating = [
+          ...Array(rating).fill(true),
+          ...Array(5 - rating).fill(false)
+      ];
+      this.rated = true;
+
+
+       //recipes.rate(recipeID, rating)
+  }
+
+
+
 
   removeComment(index) {
       if(confirm('Czy na pewno chcesz usunąć komentarz?')) {

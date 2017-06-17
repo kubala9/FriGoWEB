@@ -16,12 +16,16 @@ export class RecipeService {
     ) { }
 
     getRecipe(id): Observable<Recipe> {
-        if(this._recipe)
-            return Observable.of(this._recipe);
-        else
-            return this.api.get(endpoints.recipes + '/' + id)
-                .do(recipe => {
-                    this._recipe = recipe;
-                });
+        RecipesMock.forEach((element) => {
+            if (element.id === id) {
+                this._recipe = element;
+            }
+        });
+
+        return Observable.of(this._recipe);
     }
+            // return this.api.get(endpoints.recipes + '/' + id)
+            //     .do(recipe => {
+            //         this._recipe = recipe;
+            //     });
 }

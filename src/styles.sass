@@ -232,12 +232,7 @@ button
 
   &__input
     font-family: $fontMain
-
-    &.ng-touched.ng-invalid
-      box-shadow: 0 0 5px red
-
-    &.ng-touched.ng-valid
-      box-shadow: 0 0 5px green
+    @extend  .u-mark-validation
 
   &__label
     margin-right: 15px
@@ -246,3 +241,9 @@ button
     position: absolute
     top: -9999px
     left: -9999px
+
+.u-mark-validation
+  &.ng-touched.ng-invalid
+    box-shadow: 0 0 5px red
+  &.ng-touched.ng-valid
+    box-shadow: 0 0 5px green

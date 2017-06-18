@@ -28,7 +28,7 @@ export class RegisterComponent implements OnInit {
       .register(this.registerModel)
       .subscribe(() => {
         this.notifier.success("Zarejestrowano!");
-        this.router.navigate(['/fridge']);
+        this.router.navigate(['/account/login']);
       }, (error) => {
         this.notifier.error(error);
       });

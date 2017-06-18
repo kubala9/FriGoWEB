@@ -30,75 +30,71 @@
   animation-name: animatetop
   animation-duration: 0.4s
   @media all and (max-width: 650px)
-      padding: 100px 80px
+    padding: 100px 80px
   @media all and (max-width: 550px)
-      padding: 80px 60px
+    padding: 80px 60px
+  @media all and (max-width: 420px)
+    padding: 40px 30px
 
-@-webkit-keyframes animatetop 
-  from 
-      bottom: -150px
-      opacity: 0
-  to 
-      bottom: 150px
-      opacity: 1
+@-webkit-keyframes animatetop
+  from
+    bottom: -150px
+    opacity: 0
+  to
+    bottom: 150px
+    opacity: 1
 
 
-@keyframes animatetop 
-  from 
-      bottom: -150px
-      opacity: 0
-  to 
-      bottom: 150px
-      opacity: 1
-    
+@keyframes animatetop
+  from
+    bottom: -150px
+    opacity: 0
+  to
+    bottom: 150px
+    opacity: 1
+
 
 .o-title
   color: #6b6666
-  
+
   @media all and (max-width: 650px)
-      font-size: 34px
+    font-size: 34px
   @media all and (max-width: 450px)
-      font-size: 26px
-      
+    font-size: 26px
+
   &--underline
-      margin-bottom: 50px
-      border-bottom: 1px solid #fff
-      @media all and (max-width: 420px)
-          margin-bottom: 0px
+    margin-bottom: 50px
+    border-bottom: 1px solid #fff
+    @media all and (max-width: 420px)
+      margin-bottom: 0px
 
 .o-btn-wrapper
   margin: 40px 0 0 0
-    
+
 .o-btn
   padding: 16px 50px
   @media all and (max-width: 420px)
-      padding: 12px 30px
-      font-size: 20px
-   
+    padding: 12px 30px
+    font-size: 20px
+
 .form-row
   width: 100%
- 
+
 .new-product
+  width: 100px
+  min-width: 100px
+  flex: 1
   height: 37px
   line-height: 37px
-  margin-top: 30px
   box-sizing: border-box
   border: none
   text-align: center
   font-size: 15px
   color: grey
-  width: 320px;
-  @media all and (max-width: 590px)
-      width: 260px
-  @media all and (max-width: 460px)
-      width: 220px
   @media all and (max-width: 420px)
-      width: 180px
-      height: 30px
-      font-size: 12px
-  @media all and (max-width: 360px)
-      width: 155px
-        
+    height: 30px
+    font-size: 12px
+
 .new-product__span-select
   position: relative
   display: inline-block
@@ -107,47 +103,18 @@
     height: 30px
     line-height: 30px
 
-.new-product__styled-arrow
-  display: block
-  position: absolute
-  width: 27px
-  height: 37px
-  line-height: 37px
-  text-align: center
-  color: #fff
-  right: 0
-  bottom: 0
-  background-color: grey
-  @media all and (max-width: 420px)
-    height: 30px
-    top: 30px
-
 .new-product__product-name
-  display: inline-block;
+  display: inline-block
   border: 1px solid grey
   -webkit-appearance: none
   -moz-appearance: none
   text-indent: 1px
   border: 0px
   outline: 0px
-  
-    
-.new-product__product-quantity
-  width: 260px
-  @media all and (max-width: 590px)
-    width: 200px
-  @media all and (max-width: 460px)
-    width: 160px
-  @media all and (max-width: 420px)
-    width: 120px
-    height: 30px
-    font-size: 12px
-  @media all and (max-width: 360px)
-    width: 95px
-    
-label 
-  width: 70px;
-  display: inline-block;
+
+label
+  width: 70px
+  display: inline-block
   font-size: 18px
   @media all and (max-width: 460px)
     width: 50px
@@ -159,9 +126,28 @@ label
     width: 40px
     font-size: 14px
 
-.enable
-  display: block
-    
-.disable
-  display: none
-    
+.input-row
+  display: flex
+  flex-direction: row
+  align-items: center
+  margin-top: 30px
+  position: relative
+  &--select
+    &::after
+      content: 'v'
+      display: block
+      position: absolute
+      width: 27px
+      height: 37px
+      line-height: 37px
+      text-align: center
+      color: #fff
+      right: 0
+      bottom: 0
+      background-color: grey
+      pointer-events: none
+      @media all and (max-width: 420px)
+        height: 30px
+
+.unit-name
+  margin-left: 10px

@@ -1,5 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { FridgeService } from '../fridge.service';
+import { NotifierService } from '../../core/notifier.service';
 import { IngredientQuantity } from '../../shared/models/ingredient-quantity/ingredient-quantity';
 
 @Component({
@@ -10,8 +11,8 @@ import { IngredientQuantity } from '../../shared/models/ingredient-quantity/ingr
 export class ProductListComponent {
   rows: IngredientQuantity[] = [];
   selected = [];
-  
   constructor(
+    private notifier: NotifierService,
     private fridge: FridgeService
   ) { }
 
@@ -30,6 +31,10 @@ export class ProductListComponent {
 
   delete() {
     this.fridge.delete(this.selected.splice(0))
-      .subscribe(console.log, console.log); //TODO
+      .subscribe(() => {
+        this.notifier.success("Usunięto produkt(y) z lodówki!");
+      }, (error) => {
+        this.notifier.error(error);
+      });
   }
 }

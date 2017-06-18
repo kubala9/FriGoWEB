@@ -22,10 +22,9 @@ export class NewProductComponent implements OnInit {
   ingredients: Ingredient[] = [];
   ingredientQuantity = new NewIngredientQuantity();
   private _selectedIngredient: Ingredient;
+  private _visible: boolean;
   @ViewChild('background')
   background;
-  @Input()
-  visible: boolean;
   @Output()
   visibleChange = new EventEmitter<boolean>();
 
@@ -45,7 +44,7 @@ export class NewProductComponent implements OnInit {
     this.fridge.createItem(this.ingredientQuantity)
        .subscribe(() => {
         this.notifier.success("Dodano produkt do lodówki!");
-        this.ingredientQuantity = new NewIngredientQuantity();
+        this.clear();
       }, (error) => {
         this.notifier.error(error);
       });
@@ -54,6 +53,17 @@ export class NewProductComponent implements OnInit {
   getUnit() {
     if(this.selectedIngredient)
       return this.selectedIngredient.unit.name;
+  }
+
+  get visible(): boolean {
+    return this._visible;
+  }
+
+  @Input()
+  set visible(value: boolean) {
+    if(value && !this._visible)
+      this.clear();
+    this._visible = value;
   }
 
   get selectedIngredient() {
@@ -73,5 +83,10 @@ export class NewProductComponent implements OnInit {
   backgroundClick(event) {
     if(event.target == this.background.nativeElement)
       this.close();
+  }
+
+  clear() {
+    this.ingredientQuantity = new NewIngredientQuantity();
+    this._selectedIngredient = null;
   }
 }

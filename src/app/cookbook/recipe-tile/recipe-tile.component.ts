@@ -21,9 +21,12 @@ export class RecipeTileComponent implements OnInit {
   }
 
   get stars(): boolean[] {
-    return [
+    if(this.recipe.rating)
+      return [
       ...Array(this.recipe.rating).fill(true),
       ...Array(5-this.recipe.rating).fill(false)
-    ]
+      ];
+    else
+      return new Array(5).fill(false);
   }
 }

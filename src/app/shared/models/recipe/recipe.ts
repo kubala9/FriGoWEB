@@ -16,4 +16,5 @@ export class Recipe {
   createdAt?: Date;
   fitness?: number;
   missingIngredientQuantities?: IngredientQuantity[];
+  notes?: string;
 }

@@ -12,6 +12,8 @@ import { CookbookService } from '../cookbook.service';
 export class CookbookComponent implements OnInit {
   public recipes: Recipe[] = [];
   public tags: Tag[] = [];
+  public findRecipeInput: string;
+  public findRecipeSelect: string;
 
   constructor(
     private router: Router,

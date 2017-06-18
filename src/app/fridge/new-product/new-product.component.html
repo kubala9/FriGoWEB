@@ -1,5 +1,5 @@
-<div class="new-product__background" (click)="changeEvent($event)">
-  <div class="new-product__popup" (click)="stopPropagation($event)">
+<div class="new-product__background" [ngClass]="{'visible': visible}" (click)="backgroundClick($event)" #background>
+  <div class="new-product__popup">
     <span class="o-title o-title--underline">Dodaj produkt</span>
       <div class="form-row">
         <form (ngSubmit)="create()">
@@ -15,12 +15,10 @@
           <br/><label for="description">opis</label>
           <input name="description" class="new-product" type="text" [(ngModel)]="ingredientQuantity.description">
           <div class="o-btn-wrapper">
-            <button type="submit" (click)="changeEvent($event)" class="o-btn o-btn--color">Dodaj</button>
-            <button (click)="changeEvent($event)" class="o-btn">Wróć</button>
+            <button type="submit" class="o-btn o-btn--color">Dodaj</button>
+            <button (click)="close($event)" class="o-btn">Wróć</button>
           </div>
       </form>
     </div>
   </div>
 </div>
-
-

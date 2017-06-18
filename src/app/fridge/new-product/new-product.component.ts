@@ -1,4 +1,11 @@
-import { Component, OnInit, Input, Output, EventEmitter } from '@angular/core';
+import {
+  Component,
+  OnInit,
+  Input,
+  Output,
+  EventEmitter,
+  ViewChild
+} from '@angular/core';
 import { NewIngredientQuantity } from '../../shared/models/ingredient-quantity/new-ingredient-quantity';
 import { Ingredient } from '../../shared/models/ingredient/ingredient';
 import { FridgeService } from '../fridge.service';
@@ -15,6 +22,12 @@ export class NewProductComponent implements OnInit {
   ingredients: Ingredient[] = [];
   ingredientQuantity = new NewIngredientQuantity();
   private _selectedIngredient: Ingredient;
+  @ViewChild('background')
+  background;
+  @Input()
+  visible: boolean;
+  @Output()
+  visibleChange = new EventEmitter<boolean>();
 
   constructor(
     private fridge: FridgeService,
@@ -32,6 +45,7 @@ export class NewProductComponent implements OnInit {
     this.fridge.createItem(this.ingredientQuantity)
        .subscribe(() => {
         this.notifier.success("Dodano produkt do lodówki!");
+        this.ingredientQuantity = new NewIngredientQuantity();
       }, (error) => {
         this.notifier.error(error);
       });
@@ -50,15 +64,14 @@ export class NewProductComponent implements OnInit {
     this.ingredientQuantity.ingredientId = value.id;
     this._selectedIngredient = value;
   }
-  
-  @Input() visible;
-  @Output() changeVisible = new EventEmitter();
 
-  changeEvent(e){
-  this.changeVisible.emit(e);
+  close() {
+    this.visible = false;
+    this.visibleChange.emit(false);
   }
-  
-  stopPropagation(e){
-  e.stopPropagation();
+
+  backgroundClick(event) {
+    if(event.target == this.background.nativeElement)
+      this.close();
   }
 }

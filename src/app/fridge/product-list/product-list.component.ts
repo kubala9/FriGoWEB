@@ -32,7 +32,7 @@ export class ProductListComponent {
   delete() {
     this.fridge.delete(this.selected.splice(0))
       .subscribe(() => {
-        this.notifier.success("Usunięto produkt z lodówki!");
+        this.notifier.success("Usunięto produkt(y) z lodówki!");
       }, (error) => {
         this.notifier.error(error);
       });

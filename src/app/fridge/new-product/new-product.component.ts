@@ -4,12 +4,12 @@ import { Ingredient } from '../../shared/models/ingredient/ingredient';
 import { FridgeService } from '../fridge.service';
 import { IngredientService } from '../../core/ingredient.service';
 import { FridgeComponent } from '../fridge/fridge.component';
+import { NotifierService } from '../../core/notifier.service';
 
 @Component({
   selector: 'fg-new-product',
   templateUrl: './new-product.component.html',
-  styleUrls: ['./new-product.component.sass'],
-  providers: [FridgeService]
+  styleUrls: ['./new-product.component.sass']
 })
 export class NewProductComponent implements OnInit {
   ingredients: Ingredient[] = [];
@@ -18,7 +18,8 @@ export class NewProductComponent implements OnInit {
 
   constructor(
     private fridge: FridgeService,
-    private ingredientsService: IngredientService
+    private ingredientsService: IngredientService,
+    private notifier: NotifierService
   ) { }
 
   ngOnInit() {
@@ -29,7 +30,11 @@ export class NewProductComponent implements OnInit {
 
   create() {
     this.fridge.createItem(this.ingredientQuantity)
-      .subscribe(console.log, console.log); //TODO
+       .subscribe(() => {
+        this.notifier.success("Dodano produkt do lodówki!");
+      }, (error) => {
+        this.notifier.error(error);
+      });
   }
 
   getUnit() {

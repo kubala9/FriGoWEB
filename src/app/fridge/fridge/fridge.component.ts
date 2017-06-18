@@ -13,25 +13,17 @@ import { NewProductComponent } from './../new-product/new-product.component';
 })
 
 export class FridgeComponent implements OnInit {
-  public product: IngredientQuantity[] = [];
-
+  public isPopupVisible="disable";
   
-  constructor(private router: Router,
-    private fridge: FridgeService) {}
+  constructor() {}
 
-  ngOnInit() {
-  this.fridge.getIngredientQuantity().subscribe(
-      product => this.product = product,
-      error => console.log(error)
-      );
-  }
+  ngOnInit() { }
   
-  public visible="disable";
-  PopupOperator(e){
-        if(this.visible=="enable"){
-            this.visible='disable';
-        }else{
-            this.visible='enable';
+ togglePopupVisibility(e) {
+    if(this.isPopupVisible=="enable") {
+        this.isPopupVisible='disable';
+    } else {
+        this.isPopupVisible='enable';
         }
     }
   

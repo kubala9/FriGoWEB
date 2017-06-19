@@ -13,18 +13,14 @@ import { NewProductComponent } from './../new-product/new-product.component';
 })
 
 export class FridgeComponent implements OnInit {
-  public isPopupVisible="disable";
-  
+  public popupVisibility = false;
+
   constructor() {}
 
   ngOnInit() { }
-  
- togglePopupVisibility(e) {
-    if(this.isPopupVisible=="enable") {
-        this.isPopupVisible='disable';
-    } else {
-        this.isPopupVisible='enable';
-        }
-    }
-  
+
+  togglePopupVisibility() {
+    this.popupVisibility = !this.popupVisibility;
+  }
+
 }

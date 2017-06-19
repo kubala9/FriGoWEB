@@ -28,7 +28,7 @@ body
   border-radius: 8px
   box-sizing: border-box
   cursor: pointer
-  border: 0;
+  border: 0
 
   &:disabled
     opacity: 0.5
@@ -141,34 +141,34 @@ body
     box-shadow: 0 0 50px 10px rgba(0, 0, 0, 0.07)
     width: 900px
     height: 300px
-    
+
     @media all and (max-width: 950px)
         width: 600px
     @media all and (max-width: 650px)
         width: 400px
     @media all and (max-width: 450px)
         width: 300px
-    
-.ngx-datatable.material .datatable-header .datatable-header-cell 
+
+.ngx-datatable.material .datatable-header .datatable-header-cell
     vertical-align: top
     font-size: 24px
-    
+
     @media all and (max-width: 650px)
         font-size: 18px
     @media all and (max-width: 450px)
         font-size: 15px
-        
+
 .ngx-datatable.material .datatable-header .datatable-header-cell:nth-child(2)
     text-align: center
 
 .ngx-datatable.material .datatable-body .datatable-body-row .datatable-body-cell
     font-size: 20px
-    
+
     @media all and (max-width: 650px)
         font-size: 16px
     @media all and (max-width: 450px)
         font-size: 12px
-        
+
 .ngx-datatable.scroll-vertical .datatable-body .datatable-row-wrapper
     position: absolute
     border-top: 1px solid #b4b4ad
@@ -179,14 +179,6 @@ body
 .ngx-datatable.scroll-vertical .datatable-body
     overflow-y: scroll
 
-.ngx-datatable.material .empty-row
-    text-indent: -140px
-    
-    
-.ngx-datatable.material .empty-row::after
-    content: " Brak produktów w lodówce";
-    color: #404040
-    
 .o-rating
   display: flex
   flex-direction: row
@@ -207,7 +199,7 @@ button
   font-family: $fontMain
   border: none
   cursor: pointer
-    
+
 .o-form
   max-width: 500px
   margin: 0 auto
@@ -221,8 +213,8 @@ button
     flex-direction: column
     justify-content: flex-start
     margin-bottom: 30px
-    position: relative;
-    overflow: hidden;
+    position: relative
+    overflow: hidden
     padding: 5px
 
   &__form-item
@@ -240,18 +232,18 @@ button
 
   &__input
     font-family: $fontMain
-
-    &.ng-touched.ng-invalid
-      box-shadow: 0 0 5px red;
-
-    &.ng-touched.ng-valid
-      box-shadow: 0 0 5px green;
+    @extend  .u-mark-validation
 
   &__label
     margin-right: 15px
 
   &__hiddenSubmit
-    position: absolute;
+    position: absolute
     top: -9999px
     left: -9999px
 
+.u-mark-validation
+  &.ng-touched.ng-invalid
+    box-shadow: 0 0 5px red
+  &.ng-touched.ng-valid
+    box-shadow: 0 0 5px green

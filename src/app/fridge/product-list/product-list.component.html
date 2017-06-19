@@ -10,6 +10,7 @@
     [limit]="5"
     [selected]="selected"
     [selectionType]="'checkbox'"
+    [messages]="{emptyMessage: 'Brak produktów w lodówce'}"
     (select)='onSelect($event)'>
   <ngx-datatable-column
     [width]="100"
